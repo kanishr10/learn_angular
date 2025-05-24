@@ -1,0 +1,18 @@
+{
+    "brands":[
+        {
+            "id":1,
+            "name":"LG"
+        },
+        {
+            "id":2,
+            "name":"SAMSUNG"
+        },
+        {
+            "id":3,
+            "name":"MI"
+        }
+    ],
+    "products":[],
+    "orders":[]
+}
