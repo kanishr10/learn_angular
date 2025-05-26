@@ -13,4 +13,12 @@ export class BrandService {
   getBrands(){
     return this.http.get<Brand[]>(environment.apiUrl+"brands")
   }
+
+//   getBrand(id: number) {
+//   return this.http.get<Brand>(`http://localhost:3000/brands/${id}`);
+// }
+
+  getBrand(brandId:string){
+    return this.http.get<Brand>(environment.apiUrl+'brands/'+brandId)
+  }
 }
