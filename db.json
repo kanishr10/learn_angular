@@ -1,18 +1,218 @@
 {
-    "brands":[
-        {
-            "id":1,
-            "name":"LG"
-        },
-        {
-            "id":2,
-            "name":"SAMSUNG"
-        },
-        {
-            "id":3,
-            "name":"MI"
-        }
-    ],
-    "products":[],
-    "orders":[]
+  "brands": [
+    {
+      "id": "1",
+      "name": "LG"
+    },
+    {
+      "id": "2",
+      "name": "SAMSUNG"
+    },
+    {
+      "id": "3",
+      "name": "MI"
+    },
+    {
+      "id": "4",
+      "name": "Sony"
+    },
+    {
+      "id": "5",
+      "name": "Panasonic"
+    },
+    {
+      "id": "6",
+      "name": "Toshiba"
+    },
+    {
+      "id": "7",
+      "name": "Philips"
+    },
+    {
+      "id": "8",
+      "name": "Sharp"
+    },
+    {
+      "id": "9",
+      "name": "Hitachi"
+    },
+    {
+      "id": "10",
+      "name": "Haier"
+    },
+    {
+      "id": "11",
+      "name": "Whirlpool"
+    },
+    {
+      "id": "12",
+      "name": "Bosch"
+    },
+    {
+      "id": "13",
+      "name": "Electrolux"
+    },
+    {
+      "id": "14",
+      "name": "IFB"
+    },
+    {
+      "id": "15",
+      "name": "Godrej"
+    },
+    {
+      "id": "16",
+      "name": "Videocon"
+    },
+    {
+      "id": "17",
+      "name": "Intex"
+    },
+    {
+      "id": "18",
+      "name": "Onida"
+    },
+    {
+      "id": "19",
+      "name": "Micromax"
+    },
+    {
+      "id": "20",
+      "name": "OnePlus"
+    },
+    {
+      "id": "21",
+      "name": "Realme"
+    },
+    {
+      "id": "22",
+      "name": "Oppo"
+    },
+    {
+      "id": "23",
+      "name": "Vivo"
+    },
+    {
+      "id": "24",
+      "name": "Nokia"
+    },
+    {
+      "id": "25",
+      "name": "Motorola"
+    },
+    {
+      "id": "26",
+      "name": "Asus"
+    },
+    {
+      "id": "27",
+      "name": "Acer"
+    },
+    {
+      "id": "28",
+      "name": "Dell"
+    },
+    {
+      "id": "29",
+      "name": "HP"
+    },
+    {
+      "id": "30",
+      "name": "Lenovo"
+    },
+    {
+      "id": "31",
+      "name": "Apple"
+    },
+    {
+      "id": "32",
+      "name": "Microsoft"
+    },
+    {
+      "id": "33",
+      "name": "AmazonBasics"
+    },
+    {
+      "id": "34",
+      "name": "Boat"
+    },
+    {
+      "id": "35",
+      "name": "JBL"
+    },
+    {
+      "id": "36",
+      "name": "Zebronics"
+    },
+    {
+      "id": "37",
+      "name": "Canon"
+    },
+    {
+      "id": "38",
+      "name": "Nikon"
+    },
+    {
+      "id": "39",
+      "name": "GoPro"
+    },
+    {
+      "id": "40",
+      "name": "DJI"
+    },
+    {
+      "id": "41",
+      "name": "Sandisk"
+    },
+    {
+      "id": "42",
+      "name": "Seagate"
+    },
+    {
+      "id": "43",
+      "name": "WD"
+    },
+    {
+      "id": "44",
+      "name": "Kingston"
+    },
+    {
+      "id": "45",
+      "name": "Logitech"
+    },
+    {
+      "id": "46",
+      "name": "TP-Link"
+    },
+    {
+      "id": "47",
+      "name": "D-Link"
+    },
+    {
+      "id": "48",
+      "name": "Syska"
+    },
+    {
+      "id": "49",
+      "name": "Portronics"
+    },
+    {
+      "id": "50",
+      "name": "Fire-Boltt"
+    },
+    {
+      "id": "8913",
+      "name": "moan"
+    },
+    {
+      "id": "7c90",
+      "name": "vinoth"
+    },
+    {
+      "id": "4b54",
+      "name": "MI2"
+    }
+  ],
+  "products": [],
+  "orders": []
 }

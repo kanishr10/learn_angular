@@ -7,10 +7,11 @@ import { OrderListComponent } from './order-list/order-list.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { OrderComponent } from './order/order.component';
 import { ProductComponent } from './product/product.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {path:"",component:OutputComponent},
-  {path:"brand-form",component:BrandListComponent},
+  {path:"",component:HomeComponent},
+  {path:"brand/add",component:BrandListComponent},
   {path:"order-list",component:OrderListComponent},
   {path:"product-list",component:ProductListComponent},
   {path:"brand",component:BrandComponent},

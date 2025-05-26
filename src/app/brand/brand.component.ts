@@ -15,30 +15,46 @@ export class BrandComponent implements OnInit {
   constructor(private brandService: BrandService) { }
 
   @ViewChild(MatPaginator) pagination!: MatPaginator;
-  @ViewChild(MatPaginator) sort!: MatSort;
+  @ViewChild(MatSort) sort!: MatSort;
 
 
   ngOnInit(): void {
     this.brandService.getBrands().subscribe((brands) => {
-      this.initTbale(brands)
+      this.initTable(brands)
     })
   }
 
-  initTbale(data: Brand[]) {
-    this.dataSource = new MatTableDataSource(data) // this is my loigc any error to refer the youtue vidoe
-    this.dataSource.paginator = this.pagination;
-    this.dataSource.sort = this.sort;
-  }
+  // initTable(data: Brand[]) {
+  //   this.dataSource = new MatTableDataSource(data) // this is my loigc any error to refer the youtue vidoe
+  //   this.dataSource.paginator = this.pagination;
+  //   this.dataSource.sort = this.sort;
+  // }
 
-  dataSource!: MatTableDataSource<Brand>
+  initTable(data: Brand[]) {
+  this.dataSource = new MatTableDataSource(data);
+  this.dataSource.paginator = this.pagination;
+  this.dataSource.sort = this.sort;
+
+  this.dataSource.filterPredicate = (data: Brand, filter: string) => {
+    return data.name.toLowerCase().includes(filter);
+  };
+}
+
+  
   displayedColumns: string[] = ['name', 'action',]
+  dataSource!: MatTableDataSource<Brand>
 
   // Table filter function 
+  // applyFilter(event: Event) {
+  //   const filterValue = (event.target as HTMLInputElement).value;
+  //   this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
+  //   if(this.dataSource.paginator){
+  //     this.dataSource.paginator.firstPage();
+  //   }
+  // }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
-    if(this.dataSource.paginator){
-      this.dataSource.paginator.firstPage();
-    }
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

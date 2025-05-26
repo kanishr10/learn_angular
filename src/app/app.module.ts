@@ -30,6 +30,7 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     AuthModule,
     NgbModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule,ReactiveFormsModule,
     MatSlideToggleModule,MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,
     MatGridListModule,MatListModule,MatButtonModule,
     MatToolbarModule, MatButtonModule, MatIconModule
