@@ -31,6 +31,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -45,13 +47,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     OrderComponent,
     OrderListComponent,
     ProductComponent,
-    ProductListComponent
+    ProductListComponent,
+    
   ],
   imports: [
     BrowserModule, HttpClientModule,
-    AppRoutingModule,
+    AppRoutingModule,FormsModule,
     AuthModule,
-    NgbModule,
+    NgbModule,MatSelectModule,
     BrowserAnimationsModule,ReactiveFormsModule,
     MatSlideToggleModule,MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,
     MatGridListModule,MatListModule,MatButtonModule,

@@ -1,9 +1,10 @@
-export default interface Orders{
-    id:string,
-    orderNo:string,
-    productId:string,
-    quantity:number,
-    salePrice:number,
-    discount:number,
-    totalAmount:number
+export default interface Product {
+  id?: string;
+  productName: string;
+  productDetail: string;
+  brandId: string;
+  features: { name: string }[];
+  purchasePrice: number;
+  salePrice: number | null;
+  availableQty: number;
 }

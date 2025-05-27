@@ -1,1 +1,152 @@
-<p>product-list works!</p>
+<!-- <div class="container mt-5">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <h2 class="text-center mb-4">Add Product</h2>
+
+    <div class="mb-3">
+      <label for="productName" class="form-label">Product Name</label>
+      <input type="text" id="productName" formControlName="productName" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label for="productDetail" class="form-label">Product Detail</label>
+      <input type="text" id="productDetail" formControlName="productDetail" class="form-control">
+    </div>
+
+    <mat-form-field appearance="fill" class="w-100 mb-3">
+      <mat-label>Select Brand</mat-label>
+      <mat-select formControlName="brandId">
+        <mat-option *ngFor="let brand of brands" [value]="brand.id">
+          {{ brand.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    
+<div formArrayName="features">
+  <div *ngFor="let feature of features.controls; let i = index" class="mb-2">
+    <input type="text" [formControlName]="i" class="form-control">
+    <button type="button" (click)="removeFeature(i)" class="btn btn-danger mt-1">Remove</button>
+  </div>
+</div>
+
+
+    <button type="button" (click)="addFeature()" class="btn btn-secondary mt-2">+ Add Feature</button>
+
+    <div class="mb-3 mt-3">
+      <label for="purchasePrice" class="form-label">Purchase Price</label>
+      <input type="text" id="purchasePrice" formControlName="purchasePrice" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label for="salePrice" class="form-label">Sale Price</label>
+      <input type="text" id="salePrice" formControlName="salePrice" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label for="availableQty" class="form-label">Available Quantity</label>
+      <input type="text" id="availableQty" formControlName="availableQty" class="form-control">
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-success me-2">Add</button>
+      <button type="button" routerLink="/product" class="btn btn-secondary">Back</button>
+    </div>
+  </form>
+</div> -->
+
+<div class="container mt-5">
+    <form [formGroup]="productForm">
+        <h2 class="text-center mb-4">Add Product</h2>
+
+        <div class="mb-3">
+            <label for="productName" class="form-label">Product Name</label>
+            <input type="text" formControlName="productName"
+                class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="productDetail" class="form-label">Product Detail</label>
+            <input type="text" formControlName="productDetail"
+                class="form-control">
+        </div>
+
+        <mat-form-field appearance="fill" class="w-100 mb-3">
+            <mat-label>Brand Detail</mat-label>
+            <mat-select formControlName="brandId">
+                <mat-option *ngFor="let brand of brands" [value]="brand.id">
+                    {{ brand.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="mb-3">
+            <mat-form-field floatLabel="always">
+                <mat-label>Purchase Price</mat-label>
+                <input matInput type="number" formControlName="purchasePrice"
+                    placeholder="0" />
+                <span matTextPrefix>₹&nbsp;</span>
+                <span matTextSuffix>.00</span>
+            </mat-form-field>
+        </div>
+
+        <div class="mb-3">
+            <mat-form-field floatLabel="always">
+                <mat-label>Sale Price</mat-label>
+                <input matInput type="number" class="example-right-align"
+                    formControlName="purchasePrice" placeholder="0" />
+                <span matTextPrefix>₹&nbsp;</span>
+                <span matTextSuffix>.00</span>
+            </mat-form-field>
+        </div>
+
+        <div class="mb-3">
+            <label for="availableQty" class="form-label">Available
+                Quantity</label>
+            <input type="number" formControlName="availableQty"
+                class="form-control">
+        </div>
+        <div class="mb-3" formArrayName="features">
+            <table class="table table-bordered w-100">
+                <thead>
+                    <tr>
+                        <th>Customer Bag No</th>
+                        <th>Lot Code</th>
+                        <th>Size</th>
+                        <th>Wt</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let feature of features.controls; let i = index"
+                        [formGroupName]="i">
+                        <td><input type="text" class="form-control"
+                                formControlName="bagNo" /></td>
+                        <td><input type="text" class="form-control"
+                                formControlName="lotCode" /></td>
+                        <td><input type="text" class="form-control"
+                                formControlName="size" /></td>
+                        <td><input type="text" class="form-control"
+                                formControlName="weight" /></td>
+                        <td>
+                            <button type="button" class="btn btn-danger"
+                                (click)="removeFeature(i)">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <button type="button" mat-raised-button
+                                color="primary" (click)="addFeature()">Add
+                                Row</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success me-2"
+                (click)="onSubmit()">Add</button>
+            <button type="button" routerLink="/product"
+                class="btn btn-secondary">Back</button>
+        </div>
+    </form>
+</div>

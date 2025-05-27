@@ -1,8 +1,8 @@
 {
   "brands": [
     {
-      "id": "1",
-      "name": "LG"
+      "name": "LGpoio",
+      "id": "1"
     },
     {
       "name": "SAM",
@@ -19,112 +19,89 @@
     {
       "id": "5",
       "name": "Panasonic"
-    },
-    {
-      "id": "6",
-      "name": "Toshiba"
-    },
-    {
-      "id": "7",
-      "name": "Philips"
-    },
-    {
-      "id": "8",
-      "name": "Sharp"
-    },
-    {
-      "id": "9",
-      "name": "Hitachi"
-    },
-    {
-      "id": "10",
-      "name": "Haier"
-    },
-    {
-      "id": "11",
-      "name": "Whirlpool"
-    },
-    {
-      "id": "12",
-      "name": "Bosch"
-    },
-    {
-      "id": "13",
-      "name": "Electrolux"
-    },
-    {
-      "id": "14",
-      "name": "IFB"
-    },
-    {
-      "id": "15",
-      "name": "Godrej"
-    },
-    {
-      "id": "16",
-      "name": "Videocon"
-    },
-    {
-      "id": "17",
-      "name": "Intex"
-    },
-    {
-      "id": "18",
-      "name": "Onida"
-    },
-    {
-      "id": "19",
-      "name": "Micromax"
-    },
-    {
-      "id": "20",
-      "name": "OnePlus"
-    },
-    {
-      "id": "21",
-      "name": "Realme"
-    },
-    {
-      "id": "22",
-      "name": "Oppo"
-    },
-    {
-      "id": "23",
-      "name": "Vivo"
-    },
-    {
-      "id": "24",
-      "name": "Nokia"
-    },
-    {
-      "id": "25",
-      "name": "Motorola"
-    },
-    {
-      "id": "26",
-      "name": "Asus"
-    },
-    {
-      "id": "27",
-      "name": "Acer"
-    },
-    {
-      "id": "28",
-      "name": "Dell"
-    },
-    {
-      "id": "29",
-      "name": "HP"
-    },
-    {
-      "id": "30",
-      "name": "Lenovo"
-    },
-    {
-      "id": "31",
-      "name": "Apple"
     }
   ],
-  "products": [],
-  "orders": []
+  "products": [
+    {
+      "id": "d36b",
+      "productName": "oijewoicxw",
+      "productDetail": "wxecxtc",
+      "brandId": "3",
+      "features": [
+        ""
+      ],
+      "purchasePrice": 23,
+      "salePrice": null,
+      "availableQty": 4
+    },
+    {
+      "id": "9bfc",
+      "productName": "kask",
+      "productDetail": "vcwret",
+      "brandId": "4",
+      "features": [
+        ""
+      ],
+      "purchasePrice": 45,
+      "salePrice": 56,
+      "availableQty": 1
+    },
+    {
+      "id": "948c",
+      "productName": "iweowd",
+      "productDetail": "fdvdfb",
+      "brandId": "6",
+      "features": [
+        ""
+      ],
+      "purchasePrice": 98,
+      "salePrice": 3532,
+      "availableQty": 3
+    },
+    {
+      "id": "41c2",
+      "productName": "iwefjew",
+      "productDetail": "kmvcowerimv",
+      "brandId": "5",
+      "features": [
+        {
+          "name": "ercrv"
+        },
+        {
+          "name": "ymiky"
+        }
+      ],
+      "purchasePrice": 32,
+      "salePrice": 2345,
+      "availableQty": 1
+    },
+    {
+      "id": "5467",
+      "productName": "Kanish",
+      "productDetail": "fdvdfb",
+      "brandId": "6",
+      "features": [
+        {
+          "name": "cvcb"
+        }
+      ],
+      "purchasePrice": 98,
+      "salePrice": 3532,
+      "availableQty": 3
+    },
+    {
+      "productName": "Mohan",
+      "productDetail": "fdvdfb",
+      "brandId": "6",
+      "features": [
+        {
+          "name": "cvcb"
+        }
+      ],
+      "purchasePrice": 98,
+      "salePrice": 3532,
+      "availableQty": 3,
+      "id": "3028"
+    }
+  ]
 }

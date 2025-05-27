@@ -12,9 +12,10 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   {path:"",component:HomeComponent},
   {path:"brand/add",component:BrandListComponent},
-  { path: 'brand/:id', component: BrandListComponent }, // or your target component
+  {path: 'brand/:id', component: BrandListComponent}, // or your target component
+  {path: 'product/:id', component: ProductListComponent}, // or your target component
   {path:"order-list",component:OrderListComponent},
-  {path:"product-list",component:ProductListComponent},
+  {path:"product/add",component:ProductListComponent},
   {path:"brand",component:BrandComponent},
   {path:"order",component:OrderComponent},
   {path:"product",component:ProductComponent},

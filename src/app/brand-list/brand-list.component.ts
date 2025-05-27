@@ -10,6 +10,8 @@ import { BrandService } from '../services/brand.service';
   templateUrl: './brand-list.component.html',
   styleUrls: ['./brand-list.component.scss']
 })
+
+
 export class BrandListComponent implements OnInit {
 
   userForm!: FormGroup;
@@ -35,7 +37,7 @@ export class BrandListComponent implements OnInit {
     const id = this.route.snapshot.params['id'];
 
     if (id) {
-      this.isEdit = true;
+      // this.isEdit = true;
       this.editUserId = +id; // convert to number if needed
       this.brandService.getBrand(id).subscribe((result) => {
         this.userForm.patchValue(result);
@@ -46,7 +48,7 @@ export class BrandListComponent implements OnInit {
 
   initForm() {
     this.userForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
+      name: ['', [Validators.required, Validators.minLength(1)]],
       // email: ['', [Validators.required, Validators.email]],
       // age: ['', [Validators.required, Validators.min(1)]],
       // address: this.fb.array([])
@@ -95,7 +97,7 @@ export class BrandListComponent implements OnInit {
     //   delete userData.address;
     // }
 
-    if (this.isEdit && this.editUserId !== null) {
+    if ( this.editUserId !== null) {
       this.http.put(`http://localhost:3000/brands/${this.editUserId}`, userData)
         .subscribe(() => {
           this.loadUsers();
