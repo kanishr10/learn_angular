@@ -1,24 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OutputComponent } from './output/output.component';
-import { BrandComponent } from './brand/brand.component';
-import { BrandListComponent } from './brand-list/brand-list.component';
-import { OrderListComponent } from './order-list/order-list.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { OrderComponent } from './order/order.component';
-import { ProductComponent } from './product/product.component';
-import { HomeComponent } from './home/home.component';
+import { BrandFormComponent } from './brand/brand-form/brand-form.component';
+import { BrandListComponent } from './brand/brand-list/brand-list.component';
+import { ProductListComponent } from './product/product-list/product-list.component';
+import { ProductFormComponent } from './product/product-form/product-form.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
   {path:"brand/add",component:BrandListComponent},
-  {path: 'brand/:id', component: BrandListComponent}, // or your target component
-  {path: 'product/:id', component: ProductListComponent}, // or your target component
-  {path:"order-list",component:OrderListComponent},
+  {path: 'brand/:id', component: BrandListComponent}, 
+  {path: 'product/:id', component: ProductListComponent},
   {path:"product/add",component:ProductListComponent},
-  {path:"brand",component:BrandComponent},
-  {path:"order",component:OrderComponent},
-  {path:"product",component:ProductComponent},
+  {path:"brand",component:BrandFormComponent},
+  {path:"product",component:ProductFormComponent},
 ];
 
 @NgModule({

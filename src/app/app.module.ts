@@ -5,34 +5,30 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from 'src/auth/auth.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './header/header.component';
-import { OutputComponent } from './output/output.component';
-import { MainCompComponent } from './main-comp/main-comp.component';
+import { HeaderComponent } from './components/header/header.component';
+import { OutputComponent } from './components/output/output.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { HomeComponent } from './home/home.component';
+import {HomeComponent } from './components/home/home.component';
 import {MatIconModule} from '@angular/material/icon';
-import {MatButton, MatButtonModule} from '@angular/material/button';
+import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
-import { BrandComponent } from './brand/brand.component';
-import { BrandListComponent } from './brand-list/brand-list.component';
-import { OrderComponent } from './order/order.component';
-import { OrderListComponent } from './order-list/order-list.component';
-import { ProductComponent } from './product/product.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatSort, MatSortModule} from '@angular/material/sort';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {BrandFormComponent } from './brand/brand-form/brand-form.component';
+import {BrandListComponent } from './brand/brand-list/brand-list.component';
+import {ProductFormComponent } from './product/product-form/product-form.component';
+import {ProductListComponent } from './product/product-list/product-list.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
-import { MatSelectModule } from '@angular/material/select';
+import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -40,23 +36,20 @@ import { MatSelectModule } from '@angular/material/select';
     NavbarComponent,
     HeaderComponent,
     OutputComponent,
-    MainCompComponent,
     HomeComponent,
-    BrandComponent,
+    BrandFormComponent,
     BrandListComponent,
-    OrderComponent,
-    OrderListComponent,
-    ProductComponent,
+    ProductFormComponent,
     ProductListComponent,
     
   ],
   imports: [
     BrowserModule, HttpClientModule,
     AppRoutingModule,FormsModule,
-    AuthModule,
+    AuthModule, MatInputModule, MatTableModule, 
     NgbModule,MatSelectModule,
     BrowserAnimationsModule,ReactiveFormsModule,
-    MatSlideToggleModule,MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,
+    MatSlideToggleModule,MatFormFieldModule, MatSortModule, MatPaginatorModule,
     MatGridListModule,MatListModule,MatButtonModule,
     MatToolbarModule, MatButtonModule, MatIconModule
   ],

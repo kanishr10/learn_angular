@@ -1,16 +1,16 @@
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import Brand from '../types/brand';
-import { BrandService } from '../services/brand.service';
+import Brand from '../../types/brand';
+import { BrandService } from '../../services/brand.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-brand',
-  templateUrl: './brand.component.html',
-  styleUrls: ['./brand.component.scss']
+  templateUrl: './brand-form.component.html',
+  styleUrls: ['./brand-form.component.scss']
 })
-export class BrandComponent implements OnInit {
+export class BrandFormComponent implements OnInit {
 
   constructor(private brandService: BrandService) { }
 
@@ -23,12 +23,6 @@ export class BrandComponent implements OnInit {
       this.initTable(brands)
     })
   }
-
-  // initTable(data: Brand[]) {
-  //   this.dataSource = new MatTableDataSource(data) // this is my loigc any error to refer the youtue vidoe
-  //   this.dataSource.paginator = this.pagination;
-  //   this.dataSource.sort = this.sort;
-  // }
 
   initTable(data: Brand[]) {
   this.dataSource = new MatTableDataSource(data);
@@ -43,15 +37,6 @@ export class BrandComponent implements OnInit {
   
   displayedColumns: string[] = ['name', 'action',]
   dataSource!: MatTableDataSource<Brand>
-
-  // Table filter function 
-  // applyFilter(event: Event) {
-  //   const filterValue = (event.target as HTMLInputElement).value;
-  //   this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
-  //   if(this.dataSource.paginator){
-  //     this.dataSource.paginator.firstPage();
-  //   }
-  // }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

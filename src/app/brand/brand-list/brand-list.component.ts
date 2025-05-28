@@ -1,9 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
-import Brand from '../types/brand';
+import Brand from '../../types/brand';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BrandService } from '../services/brand.service';
+import { BrandService } from '../../services/brand.service';
 
 @Component({
   selector: 'app-brand-list',
@@ -37,7 +37,7 @@ export class BrandListComponent implements OnInit {
     const id = this.route.snapshot.params['id'];
 
     if (id) {
-      // this.isEdit = true;
+      this.isEdit = true;
       this.editUserId = +id; // convert to number if needed
       this.brandService.getBrand(id).subscribe((result) => {
         this.userForm.patchValue(result);
@@ -97,7 +97,7 @@ export class BrandListComponent implements OnInit {
     //   delete userData.address;
     // }
 
-    if ( this.editUserId !== null) {
+    if (this.isEdit && this.editUserId !== null) {
       this.http.put(`http://localhost:3000/brands/${this.editUserId}`, userData)
         .subscribe(() => {
           this.loadUsers();

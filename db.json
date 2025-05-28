@@ -50,72 +50,22 @@
       "id": "5467"
     },
     {
-      "id": "4a19",
-      "productName": "wef",
-      "productDetail": "vwr",
-      "brandId": "5",
+      "id": "e3f3",
+      "productName": "MI Tv",
+      "productDetail": "4k Video supported Tv",
+      "brandId": "3",
       "features": [
         {
-          "bagNo": "3",
-          "lotCode": "3",
-          "size": "3",
-          "weight": "3"
+          "bagNo": "0001",
+          "lotCode": "",
+          "size": "",
+          "weight": "23",
+          "selectedOption": ""
         }
       ],
-      "purchasePrice": 34,
-      "salePrice": 32,
-      "availableQty": 3
-    },
-    {
-      "id": "0ebb",
-      "productName": "wef",
-      "productDetail": "vwr",
-      "brandId": "5",
-      "features": [
-        {
-          "bagNo": "3",
-          "lotCode": "3",
-          "size": "5",
-          "weight": "3"
-        }
-      ],
-      "purchasePrice": 34,
-      "salePrice": 32,
-      "availableQty": 3
-    },
-    {
-      "id": "7f58",
-      "productName": "wef",
-      "productDetail": "vwr",
-      "brandId": "5",
-      "features": [
-        {
-          "bagNo": "3",
-          "lotCode": "9",
-          "size": "5",
-          "weight": "3"
-        }
-      ],
-      "purchasePrice": 34,
-      "salePrice": 32,
-      "availableQty": 3
-    },
-    {
-      "id": "82c7",
-      "productName": "wef",
-      "productDetail": "vwr",
-      "brandId": "5",
-      "features": [
-        {
-          "bagNo": "3",
-          "lotCode": "9",
-          "size": "5",
-          "weight": "1"
-        }
-      ],
-      "purchasePrice": 34,
-      "salePrice": 32,
-      "availableQty": 3
+      "purchasePrice": 10000,
+      "salePrice": 15000,
+      "availableQty": 1
     }
   ]
 }
