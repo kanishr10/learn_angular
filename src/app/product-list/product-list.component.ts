@@ -17,6 +17,23 @@ export class ProductListComponent implements OnInit {
   productForm!: FormGroup;
   editUserId: number | null = null;
 
+    options = 
+      {
+    lot:[
+    { value: '23', },
+    { value: '45', },
+    { value: '87', },
+      ],
+    size:[
+    { value: '65', },
+    { value: '91', },
+    { value: '47', },
+      ]
+    }
+
+
+  ;
+
   constructor(private http: HttpClient, private brandService: BrandService, private ProductService: OrderService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute,) { }
 
 
@@ -25,81 +42,98 @@ export class ProductListComponent implements OnInit {
       this.brands = data;
       console.log(this.brands);
     })
+this.productForm = this.fb.group({
+  productName: ['', Validators.required],
+  productDetail: [''],
+  // selectedOption: ['', Validators.required],
+  brandId: ['', Validators.required],
+  features: this.fb.array([]),
+  purchasePrice: [],
+  salePrice: [],
+  availableQty: []
+});
 
-    this.productForm = this.fb.group({
-      productName: ['', Validators.required],
-      productDetail: [''],
-      brandId: ['', Validators.required],
-      features: this.fb.array([
-        this.fb.group({
-          bagNo: [''],
-          lotCode: [''],
-          size: [''],
-          weight: [''],
-        })
-      ]),
-      purchasePrice: [],
-      salePrice: [],
-      availableQty: []
-    });
 
     this.addFeature();
 
-    const id = this.route.snapshot.params['id'];
+  const id = this.route.snapshot.params['id'];
+if (id) {
+  this.editUserId = +id; // 👈 ensure number
 
-    if (id) {
-      this.editUserId = +id;
-      this.ProductService.getBrand(id).subscribe((result) => {
-        this.productForm.patchValue(result);
-        console.log('Editing Product:', result);
+  this.ProductService.getBrand(this.editUserId).subscribe((result) => {
+    this.productForm.patchValue({
+      productName: result.productName,
+      productDetail: result.productDetail,
+      brandId: result.brandId,
+      purchasePrice: result.purchasePrice,
+      salePrice: result.salePrice,
+      availableQty: result.availableQty
+    });
+
+    this.features.clear();
+    result.features.forEach((feature: any) => {
+      const featureGroup = this.fb.group({
+        bagNo: [feature.bagNo],
+        lotCode: [feature.lotCode],
+        size: [feature.size],
+        weight: [feature.weight],
+        selectedOption1: [feature.selectedOption1],
+        selectedOption2: [feature.selectedOption2],
       });
-    }
+      this.features.push(featureGroup);
+    });
+
+    console.log('Editing Product:', result);
+  });
+}
+
+
+
   }
 
   get features(): FormArray {
     return this.productForm.get('features') as FormArray;
   }
 
-  onSubmit() {
-    // this.addProduct();
-    // this.ngOnInit();
-    // this.router.navigate(['/product'])
-    if (this.productForm.invalid) {
-      this.productForm.markAllAsTouched();
-      return;
-    }
-
-    this.addProduct();
+onSubmit() {
+  console.log("Work 1")
+  if (this.productForm.invalid) {
+    this.productForm.markAllAsTouched();
+    return;
   }
 
-  addFeature() {
-    const featureGroup = this.fb.group({
-      name: ['']
-    })
-    this.features.push(featureGroup);
-  }
+  console.log('Submitting:', this.productForm.value); 
+
+  this.addProduct();
+}
+
+
+addFeature() {
+  const featureGroup = this.fb.group({
+    bagNo: [''],
+    lotCode: [''],
+    size: [''],
+    weight: [''],
+    selectedOption: [''],
+  });
+  this.features.push(featureGroup);
+}
+
 
   addProduct() {
-    // console.log(this.productForm.value)
-    // this.http.post('http://localhost:3000/products', this.productForm.value)
-    //     .subscribe(() => {
-    //       // this.loadUsers();
-    //       // this.resetForm();
-    //       this.productForm.reset();
-    //       this.features.clear();
-    //       this.router.navigate(['/product'])
-    //     });
 
-    if (this.editUserId !== null) {
+    if (this.editUserId && !isNaN(this.editUserId)) {
       this.http.put(`http://localhost:3000/products/${this.editUserId}`, this.productForm.value)
         .subscribe(() => {
           this.router.navigate(['/product'])
-
+          console.log("1")
         });
     } else {
-      this.http.post('http://localhost:3000/products', this.productForm.value)
+      this.http.post('http://localhost:3000/products/', this.productForm.value)
         .subscribe(() => {
           this.router.navigate(['/product'])
+          console.log("2")
+
         });
     }
   }

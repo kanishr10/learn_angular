@@ -23,85 +23,99 @@
   ],
   "products": [
     {
-      "id": "d36b",
-      "productName": "oijewoicxw",
-      "productDetail": "wxecxtc",
-      "brandId": "3",
-      "features": [
-        ""
-      ],
-      "purchasePrice": 23,
-      "salePrice": null,
-      "availableQty": 4
-    },
-    {
-      "id": "9bfc",
-      "productName": "kask",
-      "productDetail": "vcwret",
-      "brandId": "4",
-      "features": [
-        ""
-      ],
-      "purchasePrice": 45,
-      "salePrice": 56,
-      "availableQty": 1
-    },
-    {
-      "id": "948c",
-      "productName": "iweowd",
-      "productDetail": "fdvdfb",
-      "brandId": "6",
-      "features": [
-        ""
-      ],
-      "purchasePrice": 98,
-      "salePrice": 3532,
-      "availableQty": 3
-    },
-    {
-      "id": "41c2",
-      "productName": "iwefjew",
-      "productDetail": "kmvcowerimv",
-      "brandId": "5",
-      "features": [
-        {
-          "name": "ercrv"
-        },
-        {
-          "name": "ymiky"
-        }
-      ],
-      "purchasePrice": 32,
-      "salePrice": 2345,
-      "availableQty": 1
-    },
-    {
-      "id": "5467",
       "productName": "Kanish",
       "productDetail": "fdvdfb",
       "brandId": "6",
       "features": [
         {
-          "name": "cvcb"
-        }
-      ],
-      "purchasePrice": 98,
-      "salePrice": 3532,
-      "availableQty": 3
-    },
-    {
-      "productName": "Mohan",
-      "productDetail": "fdvdfb",
-      "brandId": "6",
-      "features": [
+          "bagNo": "2",
+          "lotCode": "5",
+          "size": "5",
+          "weight": "1",
+          "selectedOption1": "23",
+          "selectedOption2": "47"
+        },
         {
-          "name": "cvcb"
+          "bagNo": "3",
+          "lotCode": "8",
+          "size": "4",
+          "weight": "1",
+          "selectedOption1": "45",
+          "selectedOption2": "91"
         }
       ],
       "purchasePrice": 98,
       "salePrice": 3532,
       "availableQty": 3,
-      "id": "3028"
+      "id": "5467"
+    },
+    {
+      "id": "4a19",
+      "productName": "wef",
+      "productDetail": "vwr",
+      "brandId": "5",
+      "features": [
+        {
+          "bagNo": "3",
+          "lotCode": "3",
+          "size": "3",
+          "weight": "3"
+        }
+      ],
+      "purchasePrice": 34,
+      "salePrice": 32,
+      "availableQty": 3
+    },
+    {
+      "id": "0ebb",
+      "productName": "wef",
+      "productDetail": "vwr",
+      "brandId": "5",
+      "features": [
+        {
+          "bagNo": "3",
+          "lotCode": "3",
+          "size": "5",
+          "weight": "3"
+        }
+      ],
+      "purchasePrice": 34,
+      "salePrice": 32,
+      "availableQty": 3
+    },
+    {
+      "id": "7f58",
+      "productName": "wef",
+      "productDetail": "vwr",
+      "brandId": "5",
+      "features": [
+        {
+          "bagNo": "3",
+          "lotCode": "9",
+          "size": "5",
+          "weight": "3"
+        }
+      ],
+      "purchasePrice": 34,
+      "salePrice": 32,
+      "availableQty": 3
+    },
+    {
+      "id": "82c7",
+      "productName": "wef",
+      "productDetail": "vwr",
+      "brandId": "5",
+      "features": [
+        {
+          "bagNo": "3",
+          "lotCode": "9",
+          "size": "5",
+          "weight": "1"
+        }
+      ],
+      "purchasePrice": 34,
+      "salePrice": 32,
+      "availableQty": 3
     }
   ]
 }
