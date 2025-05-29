@@ -66,6 +66,36 @@
       "purchasePrice": 10000,
       "salePrice": 15000,
       "availableQty": 1
+    },
+    {
+      "id": "42a1",
+      "configModuleId": "20",
+      "description": "kjkj",
+      "customFilterDetailList": [
+        {
+          "filterName": "vcxdre",
+          "conditions": [
+            {
+              "id": null,
+              "field": "2",
+              "operator": "6",
+              "value": "86",
+              "startValue": "",
+              "endValue": "",
+              "inputType": "Text"
+            },
+            {
+              "id": null,
+              "field": "6",
+              "operator": "4",
+              "value": "0898",
+              "startValue": "",
+              "endValue": "",
+              "inputType": "Text"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

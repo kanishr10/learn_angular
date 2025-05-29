@@ -1,0 +1,25 @@
+<div>
+    <h2>From Component</h2>
+</div>
+
+<form>
+    <label>Car Name:</label>
+    <br><br>
+    <input type="text" name="carname" [(ngModel)]="carName">
+    <br><br>
+    <button (click)="onSubmitCarName()">Submit</button>
+
+</form>
+
+<br><br>
+
+<div>
+    <h2>Form Child List Component</h2>
+    <div>
+        <ul>
+            <li *ngFor="let car of cars">{{car}}</li>
+        </ul>
+    </div>
+</div>
+
+<app-list [carsInput]="cars"></app-list>

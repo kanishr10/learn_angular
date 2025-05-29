@@ -1,98 +1,106 @@
-<div class="container mt-5">
+<form [formGroup]="customerFilterForm" class="container mt-4">
+  <!-- Module Name & Description -->
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Module Name</mat-label>
+        <mat-select formControlName="configModuleId" required>
+          <mat-option [value]="null">Select</mat-option>
+          <mat-option *ngFor="let f of lot" [value]="f">{{ f }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="customerFilterForm.get('configModuleId')?.invalid">
+          Module is required
+        </mat-error>
+      </mat-form-field>
+    </div>
 
-    <form [formGroup]="productForm">
-        <div formArrayName="features" class="mb-3">
-            <div class="row mb-4">
-                <div class="col-md-4">
-                    <label for="invoiceNo" class="form-label">Invoice No</label>
-                    <input type="text" id="invoiceNo" class="form-control"
-                        placeholder="Invoice No">
-                </div>
-                <div class="col-md-4">
-                    <label for="invoiceDate" class="form-label">Invoice
-                        Date</label>
-                    <input type="date" id="invoiceDate" class="form-control">
-                </div>
-                <div class="col-md-4">
-                    <label for="referenceNo" class="form-label">Reference
-                        No</label>
-                    <input type="text" id="referenceNo" class="form-control"
-                        placeholder="Reference">
-                </div>
+    <div class="col-md-6">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description" />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Filters List -->
+  <div formArrayName="customFilterDetailList">
+    <div
+      class="card mb-4 p-3 bg-light"
+      *ngFor="let filterGroup of customFilterDetailList.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <div class="row mb-2">
+        <div class="col-md-6">
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Filter Name</mat-label>
+            <input matInput formControlName="filterName" />
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 text-end">
+          <button class="btn btn-danger mt-4" type="button" (click)="removeFilter(i)">
+            Delete Filter
+          </button>
+        </div>
+      </div>
+
+      <div formArrayName="conditions">
+        <div
+          class="border rounded p-3 mb-3 bg-white"
+          *ngFor="let condition of getConditions(i).controls; let j = index"
+          [formGroupName]="j"
+        >
+          <div class="row">
+            <div class="col-md-4">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Field</mat-label>
+                <mat-select formControlName="field">
+                  <mat-option [value]="null">Select</mat-option>
+                  <mat-option *ngFor="let f of size" [value]="f">{{ f }}</mat-option>
+                </mat-select>
+              </mat-form-field>
             </div>
 
-            <table class="table w-100">
-                <thead class="table-primary ">
-                    <tr>
-                        <th>Lot Code</th>
-                        <th>Size</th>
-                        <th class="text-end">Weight</th>
-                        <th class="text-end">Rate</th>
-                        <th class="text-end">Amount</th>
-                        <th class="text-end">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let feature of features.controls; let i = index"
-                        [formGroupName]="i">
-                        <td>
-                            <div class="mb-3">
-                                <select id="lotSelect" class="form-select"
-                                    formControlName="selectedOption1">
-                                    <option *ngFor="let opt of lot"
-                                        [value]="opt">
-                                        {{ opt }}
-                                    </option>
-                                </select>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="mb-3">
-                                <select id="lotSelect" class="form-select"
-                                    formControlName="selectedOption2">
-                                    <option *ngFor="let opt of size"
-                                        [value]="opt">
-                                        {{ opt }}
-                                    </option>
-                                </select>
-                            </div>
-                        </td>
-                        <td>
-                            <input type="text" formControlName="weight"
-                                class="form-control text-end">
-                        </td>
-                        <td>
-                            <input type="text" formControlName="rate"
-                                class="form-control text-end">
-                        </td>
-                        <td>
-                            <input type="text" formControlName="amount"
-                                class="form-control text-end">
-                        </td>
-                        <td class="text-end">
-                            <div class="mb-3">
-                                <button type="button" (click)="removeFeature(i)"
-                                    class="btn btn-danger">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="5">
-                            <button type="button" (click)="addFeature()"
-                                class="btn btn-primary">
-                                Add Row
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="col-md-4">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Operator</mat-label>
+                <mat-select formControlName="operator">
+                  <mat-option [value]="null">Select</mat-option>
+                  <mat-option *ngFor="let f of size" [value]="f">{{ f }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-3">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Value</mat-label>
+                <input matInput formControlName="value" />
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-1 d-flex align-items-center justify-content-end">
+              <button
+                class="btn btn-outline-danger"
+                type="button"
+                (click)="removeCondition(i, j)"
+              >
+                ×
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div class="text-center">
-            <button type="submit" class="btn btn-success me-2"
-                (click)="onSubmit()">Add</button>
-            <button type="button" routerLink="/product"
-                class="btn btn-secondary">Back</button>
+        <div class="text-end">
+          <button class="btn btn-outline-primary mb-2" type="button" (click)="addCondition(i)">
+            + Add Condition
+          </button>
         </div>
-    </form>
-</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <div class="text-end mb-3">
+    <button class="btn btn-success me-2" type="button" (click)="addFilter()">+ Add Filter</button>
+    <button class="btn btn-primary" type="submit" (click)="onSubmit()">💾 Save</button>
+  </div>
+</form>

@@ -1,0 +1,23 @@
+<div>
+    <h2>List Components</h2>
+</div>
+<div>
+    <ul>
+        <li *ngFor="let car of cars">{{car}}</li>
+    </ul>
+</div>
+
+<br><br>
+
+<div>
+    <h2>List From Component</h2>
+</div>
+
+<form>
+    <label>Car Data:</label>
+    <br><br>
+    <input type="text" name="carname" [(ngModel)]="carsData">
+    <br><br>
+
+    <button (click)="onSubmitCarsData()">Submit</button>
+</form>

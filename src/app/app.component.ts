@@ -11,4 +11,6 @@ showme = true;
 color: any;
 toDate = new Date();
 message = "Welcome TO Angular";
+
+value = "Kanish";
 }

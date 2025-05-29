@@ -13,7 +13,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {HomeComponent } from './components/home/home.component';
 import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import {BrandFormComponent } from './brand/brand-form/brand-form.component';
@@ -29,6 +29,10 @@ import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
+import { FormComponent } from './training/sharing/form/form.component';
+import { ListComponent } from './training/sharing/list/list.component';
+import { OnchangeComponent } from './training/hooks/onchange/onchange.component';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 @NgModule({
   declarations: [
@@ -41,13 +45,15 @@ import {MatSelectModule} from '@angular/material/select';
     BrandListComponent,
     ProductFormComponent,
     ProductListComponent,
-    
+    FormComponent,
+    ListComponent,
+    OnchangeComponent, 
   ],
   imports: [
     BrowserModule, HttpClientModule,
     AppRoutingModule,FormsModule,
     AuthModule, MatInputModule, MatTableModule, 
-    NgbModule,MatSelectModule,
+    NgbModule,MatSelectModule,NgxMatSelectSearchModule,
     BrowserAnimationsModule,ReactiveFormsModule,
     MatSlideToggleModule,MatFormFieldModule, MatSortModule, MatPaginatorModule,
     MatGridListModule,MatListModule,MatButtonModule,
