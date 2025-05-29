@@ -1,168 +1,79 @@
-<!-- <div class="container mt-5">
-  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
-    <h2 class="text-center mb-4">Add Product</h2>
-
-    <div class="mb-3">
-      <label for="productName" class="form-label">Product Name</label>
-      <input type="text" id="productName" formControlName="productName" class="form-control">
-    </div>
-
-    <div class="mb-3">
-      <label for="productDetail" class="form-label">Product Detail</label>
-      <input type="text" id="productDetail" formControlName="productDetail" class="form-control">
-    </div>
-
-    <mat-form-field appearance="fill" class="w-100 mb-3">
-      <mat-label>Select Brand</mat-label>
-      <mat-select formControlName="brandId">
-        <mat-option *ngFor="let brand of brands" [value]="brand.id">
-          {{ brand.name }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    
-<div formArrayName="features">
-  <div *ngFor="let feature of features.controls; let i = index" class="mb-2">
-    <input type="text" [formControlName]="i" class="form-control">
-    <button type="button" (click)="removeFeature(i)" class="btn btn-danger mt-1">Remove</button>
-  </div>
-</div>
-
-
-    <button type="button" (click)="addFeature()" class="btn btn-secondary mt-2">+ Add Feature</button>
-
-    <div class="mb-3 mt-3">
-      <label for="purchasePrice" class="form-label">Purchase Price</label>
-      <input type="text" id="purchasePrice" formControlName="purchasePrice" class="form-control">
-    </div>
-
-    <div class="mb-3">
-      <label for="salePrice" class="form-label">Sale Price</label>
-      <input type="text" id="salePrice" formControlName="salePrice" class="form-control">
-    </div>
-
-    <div class="mb-3">
-      <label for="availableQty" class="form-label">Available Quantity</label>
-      <input type="text" id="availableQty" formControlName="availableQty" class="form-control">
-    </div>
-
-    <div class="text-center">
-      <button type="submit" class="btn btn-success me-2">Add</button>
-      <button type="button" routerLink="/product" class="btn btn-secondary">Back</button>
-    </div>
-  </form>
-</div> -->
-
 <div class="container mt-5">
 
     <form [formGroup]="productForm">
-        <h2 class="text-center mb-4 fs-2">Add Product</h2>
-
-        <div class="row border-secondary">
-            <div class="col-6">
-                <div class="mb-3">
-                    <label for="productName" class="form-label fs-5">Product
-                        Name</label>
-                    <input type="text" formControlName="productName"
-                        class="form-control border-secondary">
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="mb-3">
-                    <label for="productDetail" class="form-label fs-5">Product
-                        Detail</label>
-                    <input type="text" formControlName="productDetail"
-                        class="form-control border-secondary">
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-4">
-                <mat-form-field appearance="fill"
-                    class="w-100 mb-3 border-secondary">
-                    <mat-label class="fs-5">Brand Detail</mat-label>
-                    <mat-select formControlName="brandId">
-                        <mat-option *ngFor="let brand of brands"
-                            [value]="brand.id">
-                            {{ brand.name }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="col-4">
-                <div class="mb-3">
-                    <mat-form-field floatLabel="always">
-                        <mat-label class="fs-4">Purchase Price</mat-label>
-                        <input matInput type="number"
-                            class="example-right-align fs-5"
-                            formControlName="purchasePrice"
-                            placeholder="0" />
-                        <span matTextPrefix class="fs-6">₹&nbsp;</span>
-                        <!-- <span matTextSuffix>.00</span> -->
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="example-container mb-3">
-                    <mat-form-field floatLabel="always">
-                        <mat-label class="fs-4">Sale Price</mat-label>
-                        <input matInput type="number"
-                            class="example-right-align fs-5"
-                            formControlName="salePrice" placeholder="0" />
-                        <span matTextPrefix class="fs-6">₹&nbsp;</span>
-                        <!-- <span matTextSuffix>.00</span> -->
-                    </mat-form-field>
-                </div>
-            </div>
-        </div>
-
-        <div class="mb-3">
-            <label for="availableQty" class="form-label fs-5">Available
-                Quantity</label>
-            <input type="number" formControlName="availableQty"
-                class="form-control border-secondary">
-        </div>
         <div formArrayName="features" class="mb-3">
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <label for="invoiceNo" class="form-label">Invoice No</label>
+                    <input type="text" id="invoiceNo" class="form-control"
+                        placeholder="Invoice No">
+                </div>
+                <div class="col-md-4">
+                    <label for="invoiceDate" class="form-label">Invoice
+                        Date</label>
+                    <input type="date" id="invoiceDate" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label for="referenceNo" class="form-label">Reference
+                        No</label>
+                    <input type="text" id="referenceNo" class="form-control"
+                        placeholder="Reference">
+                </div>
+            </div>
+
             <table class="table w-100">
-                <thead>
+                <thead class="table-primary ">
                     <tr>
-                        <th>Customer Bag No</th>
                         <th>Lot Code</th>
                         <th>Size</th>
-                        <th class="text-end">Wt</th>
+                        <th class="text-end">Weight</th>
+                        <th class="text-end">Rate</th>
+                        <th class="text-end">Amount</th>
                         <th class="text-end">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let feature of features.controls; let i = index"
                         [formGroupName]="i">
-                        <td><input type="text" formControlName="bagNo"
-                                class="form-control"></td>
                         <td>
-                            <!-- <input type="text" formControlName="lotCode"
-                                class="form-control"> -->
-                            <mat-form-field appearance="fill">
-                                <mat-select formControlName="selectedOption1">
-                                    <mat-option *ngFor="let opt of options.lot" [value]="opt.value">{{opt.value}}</mat-option>
-                                </mat-select>
-                            </mat-form-field>
+                            <div class="mb-3">
+                                <select id="lotSelect" class="form-select"
+                                    formControlName="selectedOption1">
+                                    <option *ngFor="let opt of lot"
+                                        [value]="opt">
+                                        {{ opt }}
+                                    </option>
+                                </select>
+                            </div>
                         </td>
                         <td>
-                            <!-- <input type="text" formControlName="size"
-                                class="form-control"> -->
-                            <mat-form-field appearance="fill">
-                                <mat-select formControlName="selectedOption2">
-                                    <mat-option *ngFor="let opt of options.size" [value]="opt.value">{{opt.value}}</mat-option>
-                                </mat-select>
-                            </mat-form-field>
+                            <div class="mb-3">
+                                <select id="lotSelect" class="form-select"
+                                    formControlName="selectedOption2">
+                                    <option *ngFor="let opt of size"
+                                        [value]="opt">
+                                        {{ opt }}
+                                    </option>
+                                </select>
+                            </div>
                         </td>
-                        <td><input type="text" formControlName="weight"
-                                class="form-control text-end"></td>
                         <td>
-                            <button type="button" (click)="removeFeature(i)"
-                                class="btn btn-danger">Delete</button>
+                            <input type="text" formControlName="weight"
+                                class="form-control text-end">
+                        </td>
+                        <td>
+                            <input type="text" formControlName="rate"
+                                class="form-control text-end">
+                        </td>
+                        <td>
+                            <input type="text" formControlName="amount"
+                                class="form-control text-end">
+                        </td>
+                        <td class="text-end">
+                            <div class="mb-3">
+                                <button type="button" (click)="removeFeature(i)"
+                                    class="btn btn-danger">Delete</button>
+                            </div>
                         </td>
                     </tr>
                     <tr>

@@ -17,18 +17,8 @@ export class ProductListComponent implements OnInit {
   productForm!: FormGroup;
   editUserId: number | null = null;
 
-  options ={
-      lot: [
-        { value: '23', },
-        { value: '45', },
-        { value: '87', },
-      ],
-      size: [
-        { value: '65', },
-        { value: '91', },
-        { value: '47', },
-      ]
-    };
+  lot = ['10','20','30','40','50','60'];
+  size = ['2','4','6','8','10','12'];
 
   constructor(private http: HttpClient, private brandService: BrandService, private ProductService: ProductService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute,) { }
 
