@@ -3,21 +3,18 @@
         class="shadow bg-white p-4 rounded">
 
         <div class="mb-3">
-            <label for="name" class="form-label">Brand Name</label>
-            <input
-                type="text"
-                id="name"
-                class="form-control"
-                formControlName="name"
-                placeholder="Enter brand name" />
-            <div class="text-danger"
+           <mat-form-field appearance="outline" class="w-100" required>
+                <mat-label>Brand Name</mat-label>
+                <input name="name" matInput formControlName="name" />
+              </mat-form-field>
+            <!-- <div class="text-danger"
                 *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched">
                 Brand name is required
-            </div>
+            </div> -->
         </div>
 
         <div class="text-center">
-            <button type="submit" class="btn btn-success me-2">Add</button>
+            <button type="submit" [disabled]="!userForm.valid" class="btn btn-success me-2">Add</button>
             <button type="button" (click)="onBack()"
                 class="btn btn-secondary">Back</button>
         </div>
