@@ -23,75 +23,42 @@
   ],
   "products": [
     {
-      "productName": "Kanish",
-      "productDetail": "fdvdfb",
-      "brandId": "6",
-      "features": [
-        {
-          "bagNo": "2",
-          "lotCode": "5",
-          "size": "5",
-          "weight": "1",
-          "selectedOption1": "23",
-          "selectedOption2": "47"
-        },
-        {
-          "bagNo": "3",
-          "lotCode": "8",
-          "size": "4",
-          "weight": "1",
-          "selectedOption1": "45",
-          "selectedOption2": "91"
-        }
-      ],
-      "purchasePrice": 98,
-      "salePrice": 3532,
-      "availableQty": 3,
-      "id": "5467"
-    },
-    {
-      "id": "e3f3",
-      "productName": "MI Tv",
-      "productDetail": "4k Video supported Tv",
-      "brandId": "3",
-      "features": [
-        {
-          "bagNo": "0001",
-          "lotCode": "",
-          "size": "",
-          "weight": "23",
-          "selectedOption": ""
-        }
-      ],
-      "purchasePrice": 10000,
-      "salePrice": 15000,
-      "availableQty": 1
-    },
-    {
-      "id": "42a1",
-      "configModuleId": "20",
-      "description": "kjkj",
+      "id": "1870",
+      "invoice": "10",
+      "date": "2025-05-30",
+      "reference": "123",
       "customFilterDetailList": [
         {
-          "filterName": "vcxdre",
+          "filterName": "kanish",
           "conditions": [
             {
               "id": null,
-              "field": "2",
-              "operator": "6",
-              "value": "86",
+              "field": "8",
+              "operator": "2",
+              "value": "100",
               "startValue": "",
               "endValue": "",
               "inputType": "Text"
-            },
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5ae5",
+      "invoice": "40",
+      "date": "2025-05-30",
+      "reference": "1243",
+      "customFilterDetailList": [
+        {
+          "filterName": "2343",
+          "conditions": [
             {
               "id": null,
-              "field": "6",
-              "operator": "4",
-              "value": "0898",
-              "startValue": "",
-              "endValue": "",
-              "inputType": "Text"
+              "size": "3",
+              "qty": "5",
+              "rate": "50",
+              "amount": 250
             }
           ]
         }

@@ -1,43 +1,50 @@
 <form [formGroup]="customerFilterForm" class="container mt-4">
-  <!-- Module Name & Description -->
+
   <div class="row mb-3">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Module Name</mat-label>
-        <mat-select formControlName="configModuleId" required>
+        <mat-label>Invoice No:</mat-label>
+        <mat-select formControlName="invoice" required>
           <mat-option [value]="null">Select</mat-option>
-          <mat-option *ngFor="let f of lot" [value]="f">{{ f }}</mat-option>
+          <mat-option *ngFor="let f of invoiceNo" [value]="f">{{ f
+            }}</mat-option>
         </mat-select>
-        <mat-error *ngIf="customerFilterForm.get('configModuleId')?.invalid">
+        <!-- <mat-error *ngIf="customerFilterForm.get('configModuleId')?.invalid">
           Module is required
-        </mat-error>
+        </mat-error> -->
       </mat-form-field>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-4">
       <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Description</mat-label>
-        <input matInput formControlName="description" />
+        <mat-label>Date:</mat-label>
+        <input matInput type="date" formControlName="date" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Reference No:</mat-label>
+        <input matInput formControlName="reference" />
       </mat-form-field>
     </div>
   </div>
 
-  <!-- Filters List -->
   <div formArrayName="customFilterDetailList">
     <div
       class="card mb-4 p-3 bg-light"
       *ngFor="let filterGroup of customFilterDetailList.controls; let i = index"
-      [formGroupName]="i"
-    >
-      <div class="row mb-2">
-        <div class="col-md-6">
-          <mat-form-field appearance="fill" class="w-100">
-            <mat-label>Filter Name</mat-label>
+      [formGroupName]="i">
+      <div class="row ">
+        <div class="col-6">
+          <mat-form-field appearance="fill" class="w-100" required>
+            <mat-label>Jewellery No</mat-label>
             <input matInput formControlName="filterName" />
           </mat-form-field>
         </div>
         <div class="col-md-6 text-end">
-          <button class="btn btn-danger mt-4" type="button" (click)="removeFilter(i)">
+          <button class="btn btn-danger mt-4" type="button"
+            (click)="removeFilter(i)">
             Delete Filter
           </button>
         </div>
@@ -45,44 +52,44 @@
 
       <div formArrayName="conditions">
         <div
-          class="border rounded p-3 mb-3 bg-white"
+          class="border rounded p-3 mb-3 bg-white w-100"
           *ngFor="let condition of getConditions(i).controls; let j = index"
-          [formGroupName]="j"
-        >
+          [formGroupName]="j">
           <div class="row">
-            <div class="col-md-4">
-              <mat-form-field appearance="outline" class="w-100">
-                <mat-label>Field</mat-label>
-                <mat-select formControlName="field">
-                  <mat-option [value]="null">Select</mat-option>
-                  <mat-option *ngFor="let f of size" [value]="f">{{ f }}</mat-option>
-                </mat-select>
+
+            <div class="col-2">
+              <mat-form-field appearance="outline" class="w-100" required>
+                <mat-label>Size</mat-label>
+                <input matInput formControlName="size" />
               </mat-form-field>
             </div>
 
-            <div class="col-md-4">
-              <mat-form-field appearance="outline" class="w-100">
-                <mat-label>Operator</mat-label>
-                <mat-select formControlName="operator">
-                  <mat-option [value]="null">Select</mat-option>
-                  <mat-option *ngFor="let f of size" [value]="f">{{ f }}</mat-option>
-                </mat-select>
+            <div class="col-3">
+              <mat-form-field appearance="outline" class="w-100" required>
+                <mat-label>Qty</mat-label>
+                <input matInput formControlName="qty" />
               </mat-form-field>
             </div>
 
-            <div class="col-md-3">
-              <mat-form-field appearance="outline" class="w-100">
-                <mat-label>Value</mat-label>
-                <input matInput formControlName="value" />
+            <div class="col-3">
+              <mat-form-field appearance="outline" class="w-100" required>
+                <mat-label>Rate</mat-label>
+                <input matInput formControlName="rate" />
               </mat-form-field>
             </div>
 
-            <div class="col-md-1 d-flex align-items-center justify-content-end">
+            <div class="col-3">
+              <mat-form-field appearance="outline" class="w-100" >
+                <mat-label>Amount</mat-label>
+                <input matInput formControlName="amount" />
+              </mat-form-field>
+            </div>
+
+            <div class="col-1 d-flex align-items-center justify-content-end">
               <button
                 class="btn btn-outline-danger"
                 type="button"
-                (click)="removeCondition(i, j)"
-              >
+                (click)="removeCondition(i, j)">
                 ×
               </button>
             </div>
@@ -90,7 +97,8 @@
         </div>
 
         <div class="text-end">
-          <button class="btn btn-outline-primary mb-2" type="button" (click)="addCondition(i)">
+          <button class="btn btn-outline-primary mb-2" type="button"
+            (click)="addCondition(i)">
             + Add Condition
           </button>
         </div>
@@ -98,9 +106,22 @@
     </div>
   </div>
 
-  <!-- Buttons -->
   <div class="text-end mb-3">
-    <button class="btn btn-success me-2" type="button" (click)="addFilter()">+ Add Filter</button>
-    <button class="btn btn-primary" type="submit" (click)="onSubmit()">💾 Save</button>
+    <button class="btn btn-success me-2" type="button"
+      (click)="addFilter()"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+        height="16" fill="currentColor" class="bi bi-cloud-plus-fill"
+        viewBox="0 0 16 16">
+        <path
+          d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2m.5 4v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0" />
+      </svg> Add</button>
+    <button class="btn btn-primary me-2" type="submit" (click)="onSubmit()"><svg
+        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+        fill="currentColor" class="bi bi-cloud-download-fill"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M8 0a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 4.095 0 5.555 0 7.318 0 9.366 1.708 11 3.781 11H7.5V5.5a.5.5 0 0 1 1 0V11h4.188C14.502 11 16 9.57 16 7.773c0-1.636-1.242-2.969-2.834-3.194C12.923 1.999 10.69 0 8 0m-.354 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V11h-1v3.293l-2.146-2.147a.5.5 0 0 0-.708.708z" />
+      </svg></button>
+                  <button (click)="onBack()"
+                class="btn btn-secondary">Back</button>
   </div>
 </form>

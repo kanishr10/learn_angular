@@ -11,13 +11,15 @@ import Brand from '../../types/brand';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
 
   brands: Brand[] = [];
   customerFilterForm!: FormGroup;
-  lot = ['10','20','30','40','50','60'];
-  size = ['2','4','6','8','10','12'];
-  operatorList = ['Equals', 'Not Equals', 'Contains', 'Greater Than', 'Less Than'];
+  invoiceNo = ['10', '20', '30', '40', '50', '60'];
+  size = ['2', '4', '6', '8', '10', '12'];
+  isEdit!: any;
+  editUserId!: any;
+
 
 
   constructor(
@@ -27,39 +29,93 @@ export class ProductListComponent {
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-  ) { 
+  ) { }
+
+  ngOnInit(): void {
     this.customerFilterForm = this.fb.group({
-      configModuleId: [null, Validators.required],
-      description: [''],
+      invoice: [null, Validators.required],
+      date: ['', Validators.required],
+      reference: [''],
       customFilterDetailList: this.fb.array([]),
     });
+
+    const id = this.route.snapshot.params['id'];
+
+    if (id) {
+      this.isEdit = true;
+      this.editUserId = +id;
+
+      this.productService.getBrand(id).subscribe((result) => {
+
+        this.customerFilterForm.patchValue({
+          invoice: result.invoice,
+          date: result.date,
+          reference: result.reference,
+        });
+
+        this.customFilterDetailList.clear();
+
+        result.customFilterDetailList.forEach((filter: any) => {
+          const filterGroup = this.fb.group({
+            filterName: [filter.filterName, Validators.required],
+            conditions: this.fb.array([]),
+          });
+
+          filter.conditions.forEach((cond: any) => {
+            const conditionGroup = this.fb.group({
+              size: [cond.size, Validators.required],
+              qty: [cond.qty, Validators.required],
+              rate: [cond.rate, Validators.required],
+              amount: [{ value: cond.amount, disabled: true }],
+            });
+
+            conditionGroup.get('qty')!.valueChanges.subscribe(() => this.updateAmount(conditionGroup));
+            conditionGroup.get('rate')!.valueChanges.subscribe(() => this.updateAmount(conditionGroup));
+
+            (filterGroup.get('conditions') as FormArray).push(conditionGroup);
+          });
+
+          this.customFilterDetailList.push(filterGroup);
+        });
+
+        console.log('Editing brand:', result);
+      });
+    }
+
   }
 
 
   onSubmit() {
-  if (this.customerFilterForm.invalid) {
-    this.customerFilterForm.markAllAsTouched();
-    console.log('Form Invalid:', this.customerFilterForm.value);
-    return;
-  }
-
-  const formValue = this.customerFilterForm.value;
-
-  // You can format or clean data here if needed
-
-  console.log('Submitting Filter Data:', formValue);
-
-  // Example API call (inject HttpClient and Router)
-  this.http.post('http://localhost:3000/products', formValue).subscribe({
-    next: (res) => {
-      console.log('Filters saved successfully', res);
-      this.router.navigate(['/product']);
-    },
-    error: (err) => {
-      console.error('Error saving filters', err);
+    if (this.customerFilterForm.invalid) {
+      this.customerFilterForm.markAllAsTouched();
+      console.log('Form Invalid:', this.customerFilterForm.value);
+      return;
     }
-  });
-}
+
+    const formValue = this.customerFilterForm.value;
+
+
+    console.log('Submitting Filter Data:', formValue);
+
+    if (this.isEdit && this.editUserId !== null) {
+      console.log("1")
+      this.http.put(`http://localhost:3000/products/${this.editUserId}`, formValue)
+        .subscribe(() => {
+          this.router.navigate(['/product'])
+        });
+    } else {
+
+      this.http.post('http://localhost:3000/products', formValue).subscribe({
+        next: (res) => {
+          console.log('Filters saved successfully', res);
+          this.router.navigate(['/product']);
+        },
+        error: (err) => {
+          console.error('Error saving filters', err);
+        }
+      });
+    }
+  }
 
 
   get customFilterDetailList(): FormArray {
@@ -67,16 +123,28 @@ export class ProductListComponent {
   }
 
   createCondition(): FormGroup {
-    return this.fb.group({
+    const group = this.fb.group({
       id: [null],
-      field: [null, Validators.required],
-      operator: [null, Validators.required],
-      value: [''],
-      startValue: [''],  // for range conditions
-      endValue: [''],    // for range conditions
-      inputType: ['Text'], // optional to track input type
+      size: [null, Validators.required],
+      qty: [null, Validators.required],
+      rate: [null, Validators.required],
+      amount: [{ value: null, disabled: false }],
     });
+
+    group.get('qty')!.valueChanges.subscribe(() => this.updateAmount(group));
+    group.get('rate')!.valueChanges.subscribe(() => this.updateAmount(group));
+
+    return group;
   }
+
+
+  updateAmount(group: FormGroup): void {
+    const qty = +group.get('qty')!.value;
+    const rate = +group.get('rate')!.value;
+    const amount = qty && rate ? qty * rate : null;
+    group.get('amount')!.setValue(amount, { emitEvent: false });
+  }
+
 
   createFilterGroup(): FormGroup {
     return this.fb.group({
@@ -97,6 +165,11 @@ export class ProductListComponent {
     this.getConditions(filterIndex).push(this.createCondition());
   }
 
+  // addCondition(filterIndex: number) {
+  // const conditions = this.getConditions(filterIndex);
+  // conditions.push(this.createCondition());
+  // }
+
   removeCondition(filterIndex: number, conditionIndex: number) {
     this.getConditions(filterIndex).removeAt(conditionIndex);
   }
@@ -105,4 +178,8 @@ export class ProductListComponent {
     this.customFilterDetailList.removeAt(filterIndex);
   }
 
-}
+  onBack() {
+    this.router.navigate(['/product']);
+  }
+
+} 
