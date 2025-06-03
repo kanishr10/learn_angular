@@ -33,6 +33,7 @@ import { FormComponent } from './training/sharing/form/form.component';
 import { ListComponent } from './training/sharing/list/list.component';
 import { OnchangeComponent } from './training/hooks/onchange/onchange.component';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
   ],
   imports: [
     BrowserModule, HttpClientModule,
-    AppRoutingModule,FormsModule,
+    AppRoutingModule,FormsModule,MatDialogModule,
     AuthModule, MatInputModule, MatTableModule, 
     NgbModule,MatSelectModule,NgxMatSelectSearchModule,
     BrowserAnimationsModule,ReactiveFormsModule,

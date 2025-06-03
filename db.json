@@ -23,26 +23,11 @@
   ],
   "products": [
     {
-      "id": "1870",
       "invoice": "10",
       "date": "2025-05-30",
       "reference": "123",
-      "customFilterDetailList": [
-        {
-          "filterName": "kanish",
-          "conditions": [
-            {
-              "id": null,
-              "field": "8",
-              "operator": "2",
-              "value": "100",
-              "startValue": "",
-              "endValue": "",
-              "inputType": "Text"
-            }
-          ]
-        }
-      ]
+      "customFilterDetailList": [],
+      "id": "1870"
     },
     {
       "id": "5ae5",
