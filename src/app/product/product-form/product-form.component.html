@@ -1,3 +1,4 @@
+<app-header-tab [headerTitle]="Titile"></app-header-tab>
 <div class="mat-elevation-z4 bg-white"
     style="border: 1px solid #e0e0e0; border-radius: 8px;">
     <div
@@ -54,7 +55,8 @@
 <div class="popup-backdrop" *ngIf="selectedRow">
     <div class="popup">
         <div style="text-align: right;">
-            <button (click)="isClose()">Close</button>
+            <!-- <button (click)="isClose()">Close</button> -->
+            <button type="button" class="btn-close" (click)="isClose()" aria-label="Close"></button>
         </div>
         <table class="table">
             <thead>

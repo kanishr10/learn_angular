@@ -34,6 +34,9 @@ import { ListComponent } from './training/sharing/list/list.component';
 import { OnchangeComponent } from './training/hooks/onchange/onchange.component';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ViewChildComponent } from './view-child/view-child.component';
+import { HeaderTabComponent } from './header-tab/header-tab.component';
+import {MatTreeModule} from '@angular/material/tree';
 
 @NgModule({
   declarations: [
@@ -48,10 +51,12 @@ import { MatDialogModule } from '@angular/material/dialog';
     ProductListComponent,
     FormComponent,
     ListComponent,
-    OnchangeComponent, 
+    OnchangeComponent,
+    ViewChildComponent,
+    HeaderTabComponent, 
   ],
   imports: [
-    BrowserModule, HttpClientModule,
+    BrowserModule, HttpClientModule,MatTreeModule,
     AppRoutingModule,FormsModule,MatDialogModule,
     AuthModule, MatInputModule, MatTableModule, 
     NgbModule,MatSelectModule,NgxMatSelectSearchModule,

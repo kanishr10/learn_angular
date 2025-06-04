@@ -1,9 +1,10 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import Brand from '../../types/brand';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BrandService } from '../../services/brand.service';
+import { ViewChildComponent } from 'src/app/view-child/view-child.component';
 
 @Component({
   selector: 'app-brand-list',
@@ -16,18 +17,32 @@ export class BrandListComponent implements OnInit {
 
   userForm!: FormGroup;
   users: Brand[] = [];
-  //users: any[] = [];
   editUserId: number | null = null;
   isEdit = false;
-  // addressFormVisible = false;
-  // brandService = inject(BrandService)
   brand!: Brand;
   name: string = '';
+  isDisabled: boolean = false;
+
+
+  @ViewChild(ViewChildComponent) private view!:ViewChildComponent;
 
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private route: ActivatedRoute,
     private brandService: BrandService) { }
 
-  // route = inject(ActivatedRoute)
+
+  count = 0;
+  isDisable(){
+    // if(this.count == 0){
+    //   this.isDisabled = true;
+    //   this.count++;
+    // }else{
+    //   this.isDisabled = false;
+    //   this.count--;
+    // }
+
+    this.isDisabled = !this.isDisabled
+    
+  }
 
   ngOnInit() {
     this.initForm();

@@ -21,6 +21,8 @@ export class ProductFormComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  Titile: any = "Product List"
+
 
   constructor(private productServices: ProductService, private router: Router) { }
 
