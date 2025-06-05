@@ -78,6 +78,7 @@
         "toFactory": "Factory D",
         "fromDepartment": "Silver A",
         "toDepartment": "Silver B",
+        "Select": "false",
         "bagTransferDetailEntityList": [
           {
             "id": 2,

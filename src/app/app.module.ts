@@ -40,6 +40,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import { NgxBootstrapIconsModule , allIcons } from 'ngx-bootstrap-icons';
 import { BagTransferComponent } from './bag-transfer/bag-transfer.component';
 import { AddBagTransferComponent } from './add-bag-transfer/add-bag-transfer.component';
+import { PopupBagTransferComponent } from './popup-bag-transfer/popup-bag-transfer.component';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { AddBagTransferComponent } from './add-bag-transfer/add-bag-transfer.com
     HeaderTabComponent,
     BagTransferComponent,
     AddBagTransferComponent,
+    PopupBagTransferComponent,
 
   ],
   imports: [

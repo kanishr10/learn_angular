@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BagTransferService } from '../services/bag-transfer.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupBagTransferComponent } from '../popup-bag-transfer/popup-bag-transfer.component';
 
 @Component({
   selector: 'app-add-bag-transfer',
@@ -9,10 +11,12 @@ import { BagTransferService } from '../services/bag-transfer.service';
 })
 export class AddBagTransferComponent implements OnInit {
 
-bagTransfer!: FormGroup;
-  headerTitle = "Add Transfer";
+  bagTransfer!: FormGroup;
+  headerTitle = "Add Transfer Form";
+  showBagDetails: boolean = false;
+  selectedRows: any[] = [] ;
 
-  constructor(private fb: FormBuilder, private bagServices: BagTransferService) {}
+  constructor(private fb: FormBuilder, private bagServices: BagTransferService, private dialogRef: MatDialog) {}
 
   ngOnInit(): void {
     this.bagTransfer = this.fb.group({
@@ -23,6 +27,7 @@ bagTransfer!: FormGroup;
       toFactory: ["", [Validators.required]],
       fromDepartment: ["",[Validators.required]],
       toDepartment: ["", [Validators.required]],
+      Select: [false],
       bagTransferDetailEntityList: this.fb.array([
         this.createBagDetailGroup()
       ])
@@ -44,13 +49,13 @@ bagTransfer!: FormGroup;
     return this.bagTransfer.get('bagTransferDetailEntityList') as FormArray;
   }
 
-  // addRow(): void {
-  //   this.bagDetails.push(this.createBagDetailGroup());
-  // }
+  addRow(): void {
+    this.bagDetails.push(this.createBagDetailGroup());
+  }
 
-  // removeRow(index: number): void {
-  //   this.bagDetails.removeAt(index);
-  // }
+  removeRow(index: number): void {
+    this.bagDetails.removeAt(index);
+  }
 
   onSubmit(): void {
     if(this.bagTransfer.valid){
@@ -62,6 +67,15 @@ bagTransfer!: FormGroup;
         this.bagDetails.push(this.createBagDetailGroup());
       })
     }
+  }
+
+  onDialog(){
+    this.dialogRef.open(PopupBagTransferComponent)
+  }
+
+  onTransferSelected(rows: any[]) {
+    this.selectedRows = rows;
+    console.log('Selected Rows from popup:', this.selectedRows);
   }
 
 }

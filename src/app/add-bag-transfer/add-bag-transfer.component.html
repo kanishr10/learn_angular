@@ -1,52 +1,55 @@
+<app-popup-bag-transfer (transferSelected)="onTransferSelected($event)"></app-popup-bag-transfer>
+
 <div class="container mt-4">
-  <h2>{{ headerTitle }} Form</h2>
-  <form [formGroup]="bagTransfer" (ngSubmit)="onSubmit()">
-    <div class="row mb-3">
-      <div class="col-md-4">
-        <mat-form-field appearance="outline" class="w-100">
-          <mat-label>Transfer No</mat-label>
-          <input matInput type="text" formControlName="transferNo">
-        </mat-form-field>
-      </div>
+    <h2>{{ headerTitle }}</h2>
+    <form [formGroup]="bagTransfer" (ngSubmit)="onSubmit()">
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Transfer No</mat-label>
+                    <input matInput type="text" formControlName="transferNo">
+                </mat-form-field>
+            </div>
 
-      <div class="col-md-4">
-        <mat-form-field appearance="outline" class="w-100">
-          <mat-label>Transfer Date</mat-label>
-          <input matInput type="date" formControlName="transferDate">
-        </mat-form-field>
-      </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Transfer Date</mat-label>
+                    <input matInput type="date" formControlName="transferDate">
+                </mat-form-field>
+            </div>
 
-      <div class="col-md-4">
-        <mat-form-field appearance="outline" class="w-100">
-          <mat-label>From Factory</mat-label>
-          <input matInput type="text" formControlName="fromFactory">
-        </mat-form-field>
-      </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>From Factory</mat-label>
+                    <input matInput type="text" formControlName="fromFactory">
+                </mat-form-field>
+            </div>
 
-      <div class="col-md-4">
-        <mat-form-field appearance="outline" class="w-100">
-          <mat-label>To Factory</mat-label>
-          <input matInput type="text" formControlName="toFactory">
-        </mat-form-field>
-      </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>To Factory</mat-label>
+                    <input matInput type="text" formControlName="toFactory">
+                </mat-form-field>
+            </div>
 
-      <div class="col-md-4">
-        <mat-form-field appearance="outline" class="w-100">
-          <mat-label>From Department</mat-label>
-          <input matInput type="text" formControlName="fromDepartment">
-        </mat-form-field>
-      </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>From Department</mat-label>
+                    <input matInput type="text"
+                        formControlName="fromDepartment">
+                </mat-form-field>
+            </div>
 
-      <div class="col-md-4">
-        <mat-form-field appearance="outline" class="w-100">
-          <mat-label>To Department</mat-label>
-          <input matInput type="text" formControlName="toDepartment">
-        </mat-form-field>
-      </div>
-    </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>To Department</mat-label>
+                    <input matInput type="text" formControlName="toDepartment">
+                </mat-form-field>
+            </div>
+        </div>
 
-    <h5 class="mt-4">Bag Details</h5>
-<div formArrayName="bagTransferDetailEntityList"
+        <h5 class="mt-4">Bag Details</h5>
+        <div formArrayName="bagTransferDetailEntityList"
             class="table-responsive mt-4">
             <table class="table table-bordered table-hover">
                 <thead class="table-light">
@@ -91,27 +94,61 @@
                     </tr>
                 </tbody>
             </table>
-
-            <!-- <button type="button" class="btn btn-outline-primary btn-sm"
-                (click)="addRow()">
-                <i class="bi bi-plus-circle"></i> Add Row
-            </button> -->
         </div>
 
-    <!-- <div class="text-end mt-3">
-      <button mat-stroked-button color="primary" type="button" (click)="addRow()">
-        <mat-icon>add</mat-icon> Add Row
-      </button>
-    </div> -->
+        <!-- Show Button to Toggle Visibility -->
+        <div class="text-end mb-3">
+            <button type="button" class="btn btn-outline-info btn-sm"
+                (click)="showBagDetails = !showBagDetails">
+                <i class="bi bi-eye-fill"></i> {{ showBagDetails ? 'Hide' :
+                'Show' }} Bag Details
+            </button>
+        </div>
 
-    <div class="d-flex justify-content-around mt-4">
-      <button mat-stroked-button color="accent" routerLink="/bag_transfer">
-        Cancel
-      </button>
+        <!-- Table Only When Bag Details Exist and Visible -->
+        <div *ngIf="showBagDetails && bagDetails.length > 0"
+            formArrayName="bagTransferDetailEntityList"
+            class="table-responsive mt-4">
+            <table class="table table-bordered table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>Bag ID</th>
+                        <th>Lot ID</th>
+                        <th>Lot Code</th>
+                        <th>Stone Size</th>
+                        <th>Commodity</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let group of bagDetails.controls; let i = index"
+                        [formGroupName]="i">
+                        <td>{{ group.get('bagId')?.value }}</td>
+                        <td>{{ group.get('lotId')?.value }}</td>
+                        <td>{{ group.get('lotCode')?.value }}</td>
+                        <td>{{ group.get('stoneSize')?.value }}</td>
+                        <td>{{ group.get('commodityName')?.value }}</td>
+                        <td class="text-center">
+                            <button type="button" (click)="onDialog()" class="btn btn-danger btn-sm">
+                                <i class="bi bi-cloud-plus"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-      <button mat-flat-button color="primary" type="submit" [disabled]="bagTransfer.invalid">
-        Submit
-      </button>
-    </div>
-  </form>
+        <div class="d-flex justify-content-around mt-4">
+            <button mat-stroked-button color="accent"
+                routerLink="/bag_transfer">
+                Cancel
+            </button>
+
+            <button mat-flat-button color="primary" type="submit"
+                [disabled]="bagTransfer.invalid">
+                Submit
+            </button>
+        </div>
+    </form>
 </div>
+
