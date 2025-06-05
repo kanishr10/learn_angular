@@ -37,6 +37,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ViewChildComponent } from './view-child/view-child.component';
 import { HeaderTabComponent } from './header-tab/header-tab.component';
 import {MatTreeModule} from '@angular/material/tree';
+import { NgxBootstrapIconsModule , allIcons } from 'ngx-bootstrap-icons';
+import { BagTransferComponent } from './bag-transfer/bag-transfer.component';
+import { AddBagTransferComponent } from './add-bag-transfer/add-bag-transfer.component';
+
 
 @NgModule({
   declarations: [
@@ -53,14 +57,17 @@ import {MatTreeModule} from '@angular/material/tree';
     ListComponent,
     OnchangeComponent,
     ViewChildComponent,
-    HeaderTabComponent, 
+    HeaderTabComponent,
+    BagTransferComponent,
+    AddBagTransferComponent,
+
   ],
   imports: [
     BrowserModule, HttpClientModule,MatTreeModule,
     AppRoutingModule,FormsModule,MatDialogModule,
-    AuthModule, MatInputModule, MatTableModule, 
+    AuthModule, MatInputModule, MatTableModule,
     NgbModule,MatSelectModule,NgxMatSelectSearchModule,
-    BrowserAnimationsModule,ReactiveFormsModule,
+    BrowserAnimationsModule,ReactiveFormsModule,NgxBootstrapIconsModule.pick(allIcons),
     MatSlideToggleModule,MatFormFieldModule, MatSortModule, MatPaginatorModule,
     MatGridListModule,MatListModule,MatButtonModule,
     MatToolbarModule, MatButtonModule, MatIconModule
@@ -69,3 +76,8 @@ import {MatTreeModule} from '@angular/material/tree';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export interface BreadcrumbList {
+  name: string;
+  routerLink: string;
+}

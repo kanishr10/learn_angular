@@ -1,3 +1,32 @@
+.sidebar {
+  width: 220px;
+  transition: width 0.3s;
+}
+
 a{
-    cursor: pointer;
+    font-size: 20px;
+}
+
+i{
+    font-size: 30px;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+.sidebar .nav-link span {
+  display: inline;
+  transition: opacity 0.3s;
+}
+
+.sidebar.collapsed .nav-link span {
+  opacity: 0;
+  width: 0;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.sidebar .bi {
+  font-size: 1.2rem;
 }

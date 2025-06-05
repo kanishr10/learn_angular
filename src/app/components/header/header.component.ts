@@ -9,6 +9,12 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
+  isSidebarCollapsed = false;
+
+    toggleSidebar() {
+    this.isSidebarCollapsed = !this.isSidebarCollapsed;
+  }
+
   ngOnInit(): void {
   }
 

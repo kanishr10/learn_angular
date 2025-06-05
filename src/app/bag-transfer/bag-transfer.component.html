@@ -1,0 +1,41 @@
+<app-header-tab [title]="headerTitle"></app-header-tab>
+
+<div class="row">
+    <div class="col-12">
+            <div
+        style="display: flex; justify-content: space-between; align-items: center; padding: 16px;">
+        <h1 class="mat-headline">Products</h1>
+        <button mat-raised-button color="primary" routerLink="/bag_transfer/add">Add
+            Transfer</button>
+    </div>
+    </div>
+    <table class="col-12 table table-hover">
+        <thead>
+            <tr class="p-3">
+                <th>Actions</th>
+                <th>Transfer No</th>
+                <th>Transfer Date</th>
+                <th>From Factory</th>
+                <th>To Factory</th>
+                <th>From Department</th>
+                <th>To Department</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="p-3" *ngFor="let bag of bagTransfer">
+                <td>
+                    <div class="d-flex justify-content-around">
+                        <i class="bi bi-trash-fill"></i>
+                        <i class="bi bi-pen"></i>
+                    </div>
+                </td>
+                <td>{{bag.transferNo}}</td>
+                <td>{{bag.transferDate}}</td>
+                <td>{{bag.fromFactory}}</td>
+                <td>{{bag.toFactory}}</td>
+                <td>{{bag.fromDepartment}}</td>
+                <td>{{bag.toDepartment}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

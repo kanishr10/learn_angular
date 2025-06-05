@@ -20,6 +20,8 @@ export class ProductListComponent implements OnInit {
   isEdit!: any;
   editUserId!: any;
 
+  Title = "Product Form"
+
 
 
   constructor(

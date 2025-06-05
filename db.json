@@ -49,5 +49,102 @@
         }
       ]
     }
+  ],
+  "bagTransfers": [
+      {
+        "id": 1,
+        "transferNo": "BT-1001",
+        "transferDate": "2025-06-01",
+        "fromFactory": "Factory A",
+        "toFactory": "Factory B",
+        "fromDepartment": "Gold A",
+        "toDepartment": "Gold B",
+        "bagTransferDetailEntityList": [
+          {
+            "id": 1,
+            "bagId": "BAG001",
+            "lotId": "L001",
+            "lotCode": "LC101",
+            "stoneSize": "18k",
+            "commodityName": "Gold Ring"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "transferNo": "BT-1002",
+        "transferDate": "2025-06-02",
+        "fromFactory": "Factory C",
+        "toFactory": "Factory D",
+        "fromDepartment": "Silver A",
+        "toDepartment": "Silver B",
+        "bagTransferDetailEntityList": [
+          {
+            "id": 2,
+            "bagId": "BAG002",
+            "lotId": "L002",
+            "lotCode": "LC102",
+            "stoneSize": "22k",
+            "commodityName": "Silver Chain"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "transferNo": "BT-1003",
+        "transferDate": "2025-06-03",
+        "fromFactory": "Factory E",
+        "toFactory": "Factory F",
+        "fromDepartment": "Diamond A",
+        "toDepartment": "Diamond B",
+        "bagTransferDetailEntityList": [
+          {
+            "id": 3,
+            "bagId": "BAG003",
+            "lotId": "L003",
+            "lotCode": "LC103",
+            "stoneSize": "0.5ct",
+            "commodityName": "Diamond Pendant"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "transferNo": "BT-1004",
+        "transferDate": "2025-06-04",
+        "fromFactory": "Factory G",
+        "toFactory": "Factory H",
+        "fromDepartment": "Platinum A",
+        "toDepartment": "Platinum B",
+        "bagTransferDetailEntityList": [
+          {
+            "id": 4,
+            "bagId": "BAG004",
+            "lotId": "L004",
+            "lotCode": "LC104",
+            "stoneSize": "10g",
+            "commodityName": "Platinum Ring"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "transferNo": "BT-1005",
+        "transferDate": "2025-06-05",
+        "fromFactory": "Factory I",
+        "toFactory": "Factory J",
+        "fromDepartment": "Gem A",
+        "toDepartment": "Gem B",
+        "bagTransferDetailEntityList": [
+          {
+            "id": 5,
+            "bagId": "BAG005",
+            "lotId": "L005",
+            "lotCode": "LC105",
+            "stoneSize": "5mm",
+            "commodityName": "Ruby Gem"
+          }
+        ]
+      }
   ]
 }
