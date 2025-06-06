@@ -1,36 +1,41 @@
-<div class="container">
-<table class="col-12 table table-hover">
-        <thead>
-            <tr class="p-3">
-                <th>Actions</th>
-                <th>Transfer No</th>
-                <th>Transfer Date</th>
-                <th>From Factory</th>
-                <th>To Factory</th>
-                <th>From Department</th>
-                <th>To Department</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="p-3" *ngFor="let bag of bagTransfer; let i = index">
-                <td>
-                    <div class="form-check">
-                        <input class="form-check-input custom-checkbox" type="checkbox" [(ngModel)]="bag.Select" (change)="onCheckboxChange($event,bag)">
-                    </div>
-                </td>
-                <td>{{bag.transferNo}}</td>
-                <td>{{bag.transferDate}}</td>
-                <td>{{bag.fromFactory}}</td>
-                <td>{{bag.toFactory}}</td>
-                <td>{{bag.fromDepartment}}</td>
-                <td>{{bag.toDepartment}}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="row h-100"> <!-- Added h-100 for full height -->
+    <div class="col-12 table-container"> <!-- Added table-container class -->
+        <table class="table table-hover">
+            <thead>
+                <tr class="p-3 sticky-header"> <!-- Added sticky-header class -->
+                    <th>Actions</th>
+                    <th>Transfer No</th>
+                    <th>Transfer Date</th>
+                    <th>From Factory</th>
+                    <th>To Factory</th>
+                    <th>From Department</th>
+                    <th>To Department</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="p-3" *ngFor="let bag of bagTransfer; let i = index">
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input custom-checkbox" type="checkbox" 
+                                   [(ngModel)]="bag.Select" (change)="onCheckboxChange($event,bag)">
+                        </div>
+                    </td>
+                    <td>{{bag.transferNo}}</td>
+                    <td>{{bag.transferDate}}</td>
+                    <td>{{bag.fromFactory}}</td>
+                    <td>{{bag.toFactory}}</td>
+                    <td>{{bag.fromDepartment}}</td>
+                    <td>{{bag.toDepartment}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <div class="text-end mt-3">
-        <button class="btn btn-primary" (click)="addSelectedToUpload()">
-            Add Selected
-        </button>
+    <div class="col-12 fixed-button-container">
+        <div class="text-center">
+            <button class="btn btn-primary" (click)="addSelectedToUpload()">
+                Add Selected
+            </button>
+        </div>
     </div>
 </div>

@@ -105,14 +105,13 @@
             </button> -->
             <button type="button" (click)="onDialog()"
                 class="btn btn-danger btn-sm">
-                <i class="bi bi-cloud-plus"></i>
+                <i class="bi bi-cloud-plus w-10" style="font-size: 24px;"></i>
             </button>
 
         </div>
 
         <!-- Table Only When Bag Details Exist and Visible -->
         <div
-            formArrayName="bagTransferDetailEntityList"
             class="table-responsive mt-4">
             <table class="table table-bordered table-hover">
                 <thead class="table-light">
@@ -128,15 +127,15 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let group of selectedRows; let i = index"
-                        [formGroupName]="i" (click)="viewChildTable(group)">
+                        (click)="viewChildTable(group)">
                         <td>{{group.transferNo}}</td>
-                        <td>{{group.transferdata }}</td>
+                        <td>{{group.transferDate }}</td>
                         <td>{{group.fromFactory }}</td>
                         <td>{{group.toFactory }}</td>
                         <td>{{group.fromDepartment }}</td>
                         <td>{{group.toDepartment }}</td>
                         <td>
-                            <button type="button" (click)="isDeleteRow()"
+                            <button type="button" (click)="isDeleteRow(group)"
                                 class="btn btn-danger btn-sm">
                                 <i class="bi bi-trash"></i>
                             </button>
@@ -154,11 +153,12 @@
             <table class="table table-bordered table-hover">
                 <thead class="table-light">
                     <tr>
-                        <th>Bag ID</th>
-                        <th>Lot ID</th>
-                        <th>Lot Code</th>
-                        <th>Stone Size</th>
-                        <th>Commodity</th>
+                        <th width="15%">Bag ID</th>
+                        <th width="15%">Lot ID</th>
+                        <th width="15%">Lot Code</th>
+                        <th width="15%">Stone Size</th>
+                        <th width="15%">Commodity</th>
+                        <th width="20%" style="text-align: center;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -168,9 +168,62 @@
                         <td>{{group.bagTransferDetailEntityList[0]?.lotCode}}</td>
                         <td>{{group.bagTransferDetailEntityList[0]?.stoneSize}}</td>
                         <td>{{group.bagTransferDetailEntityList[0]?.commodityName}}</td>
+                        <td class="d-flex justify-content-around">
+                            <button type="button"
+                                (click)="isDeleteLotRow(group)"
+                                class="btn btn-danger btn-sm">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                            <button type="button"
+                                class="btn btn-danger btn-sm">
+                                <i class="bi bi-pen"></i>
+                            </button>
+                            <button type="button" (click)="createLotTable()"
+                                class="btn btn-danger btn-sm">
+                                <i class="bi bi-plus-circle-dotted"></i>
+                            </button>
+                        </td>
                     </tr>
+                    <!-- <ng-container *ngIf="newRows.length > 0">
+                        <tr *ngFor="let group of newRows">
+                            <td><input
+                                    [(ngModel)]="group.bagTransferDetailEntityList[0].bagId"
+                                    class="form-control" /></td>
+                            <td><input
+                                    [(ngModel)]="group.bagTransferDetailEntityList[0].lotId"
+                                    class="form-control" /></td>
+                            <td><input
+                                    [(ngModel)]="group.bagTransferDetailEntityList[0].lotCode"
+                                    class="form-control" /></td>
+                            <td><input
+                                    [(ngModel)]="group.bagTransferDetailEntityList[0].stoneSize"
+                                    class="form-control" /></td>
+                            <td><input
+                                    [(ngModel)]="group.bagTransferDetailEntityList[0].commodityName"
+                                    class="form-control" /></td>
+                            <td class="d-flex justify-content-around">
+                                <button type="button"
+                                    (click)="isDeleteLotNewRow(group)"
+                                    class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                                <button type="button"
+                                    class="btn btn-danger btn-sm">
+                                    <i class="bi bi-pen"></i>
+                                </button>
+                                <button type="button" (click)="createLotTable()"
+                                class="btn btn-danger btn-sm">
+                                <i class="bi bi-plus-circle-dotted"></i>
+                            </button>
+                            </td>
+                        </tr>
+                    </ng-container> -->
+
                 </tbody>
             </table>
+            <button mat-flat-button color="primary" type="submit" (click)="onSubmit()">
+                Submit
+            </button>
         </div>
 
         <div class="d-flex justify-content-around mt-4">

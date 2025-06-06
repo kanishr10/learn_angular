@@ -26,7 +26,10 @@ export class PopupBagTransferComponent implements OnInit {
   @Output() transferSelected = new EventEmitter<any[]>();
 
   addSelectedToUpload() {
-    this.sendDataToParent();
+    console.log(this.bagTransferUpload)
+      
+    this.transferSelected.emit(this.bagTransferUpload);
+
   this.dialogRef.close(this.bagTransferUpload);  // Send data back to parent
 }
 
@@ -34,13 +37,7 @@ export class PopupBagTransferComponent implements OnInit {
   onCheckboxChange(event: any, row: any) {
     if (event.target.checked) {
       this.bagTransferUpload.push(row);
-    } else {
-      this.bagTransferUpload = this.bagTransferUpload.filter(item => item !== row);
     }
   }
 
-
-  sendDataToParent() {
-    this.transferSelected.emit(this.bagTransferUpload);
-  }
 }

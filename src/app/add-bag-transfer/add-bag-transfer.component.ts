@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BagTransferService } from '../services/bag-transfer.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupBagTransferComponent } from '../popup-bag-transfer/popup-bag-transfer.component';
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-add-bag-transfer',
@@ -16,6 +17,7 @@ export class AddBagTransferComponent implements OnInit {
   showBagDetails: boolean = false;
   selectedRows: any[] = [];
   details: any[] = [];
+  newRows: any[] = [];
 
   constructor(private fb: FormBuilder, private bagServices: BagTransferService, private dialogRef: MatDialog) { }
 
@@ -47,6 +49,20 @@ export class AddBagTransferComponent implements OnInit {
     });
   }
 
+createLotTable() {
+  const newRow = {
+        bagId: '',
+        lotId: '',
+        lotCode: '',
+        stoneSize: '',
+        commodityName: ''
+  };
+  this.newRows.push(newRow);
+  console.log(this.newRows);
+  console.log(newRow)
+}
+
+
   get bagDetails(): FormArray {
     return this.bagTransfer.get<any>('bagTransferDetailEntityList') as FormArray;
   }
@@ -60,6 +76,7 @@ export class AddBagTransferComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log(this.newRows)
     if (this.bagTransfer.valid) {
       const payload = this.bagTransfer.getRawValue();
       this.bagServices.createTransfer(payload).subscribe(() => {
@@ -73,13 +90,15 @@ export class AddBagTransferComponent implements OnInit {
 
   onDialog() {
     const dialogRef = this.dialogRef.open(PopupBagTransferComponent, {
-      width: '600px',
+      width: '800px',
+      height:'400px',
       data: {}
     });
 
     dialogRef.componentInstance.transferSelected.subscribe((rows: any[]) => {
       if (rows) {
         this.onTransferSelected(rows);
+        console.log(rows)
       }
     });
   }
@@ -87,15 +106,30 @@ export class AddBagTransferComponent implements OnInit {
 
   onTransferSelected(rows: any[]) {
     this.selectedRows = rows;
-    console.log('Selected Rows from popup:', this.selectedRows);
+    // console.log('Selected Rows from popup:', this.selectedRows);
   }
 
   viewChildTable(row: any): void {
     this.details = [row]
   }
 
-  isDeleteRow() {
+  isDeleteRow(row: any): void {
+    if (this.selectedRows.indexOf(row) > -1) {
+      this.selectedRows.splice(this.selectedRows.indexOf(row), 1);
+    }
+  }
 
+  isDeleteLotRow(row: any){
+    
+    if(this.details.indexOf(row) > -1){
+      this.details.splice(this.details.indexOf(row), 1)
+    }
+  }
+
+  isDeleteLotNewRow(row:any){
+    if(this.newRows.indexOf(row) > -1){
+      this.newRows.splice(this.newRows.indexOf(row), 1)
+    }
   }
 
 }

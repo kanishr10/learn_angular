@@ -1,9 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import Orders from '../types/product';
-import { environment } from 'src/environments/environment';
 import Product from '../types/product';
-import Brand from '../types/brand';
 
 @Injectable({
   providedIn: 'root'
