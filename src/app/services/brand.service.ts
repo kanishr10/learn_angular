@@ -11,7 +11,7 @@ export class BrandService {
   constructor(private http: HttpClient) { }
 
   getBrands(){
-    return this.http.get<Brand[]>(environment.apiUrl+"brands")
+    return this.http.get<Brand[]>("http://localhost:3000/brands")
   }
 
 //   getBrand(id: number) {
@@ -19,6 +19,6 @@ export class BrandService {
 // }
 
   getBrand(brandId:string){
-    return this.http.get<Brand>(environment.apiUrl+'brands/'+brandId)
+    return this.http.get<Brand>('http://localhost:3000/brands/'+brandId)
   }
 }
