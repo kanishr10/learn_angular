@@ -1,4 +1,4 @@
-<app-popup-bag-transfer (transferSelected)="onTransferSelected($event)"></app-popup-bag-transfer>
+
 
 <div class="container mt-4">
     <h2>{{ headerTitle }}</h2>
@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        <h5 class="mt-4">Bag Details</h5>
+        <!-- <h5 class="mt-4">Bag Details</h5>
         <div formArrayName="bagTransferDetailEntityList"
             class="table-responsive mt-4">
             <table class="table table-bordered table-hover">
@@ -94,21 +94,63 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div> -->
 
         <!-- Show Button to Toggle Visibility -->
         <div class="text-end mb-3">
-            <button type="button" class="btn btn-outline-info btn-sm"
+            <!-- <button type="button" class="btn btn-outline-info btn-sm"
                 (click)="showBagDetails = !showBagDetails">
                 <i class="bi bi-eye-fill"></i> {{ showBagDetails ? 'Hide' :
                 'Show' }} Bag Details
+            </button> -->
+            <button type="button" (click)="onDialog()"
+                class="btn btn-danger btn-sm">
+                <i class="bi bi-cloud-plus"></i>
             </button>
+
         </div>
 
         <!-- Table Only When Bag Details Exist and Visible -->
-        <div *ngIf="showBagDetails && bagDetails.length > 0"
+        <div
             formArrayName="bagTransferDetailEntityList"
             class="table-responsive mt-4">
+            <table class="table table-bordered table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>Transfer No</th>
+                        <th>Transfer Date</th>
+                        <th>From Factory</th>
+                        <th>To Factory</th>
+                        <th>From Department</th>
+                        <th>To Department</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let group of selectedRows; let i = index"
+                        [formGroupName]="i" (click)="viewChildTable(group)">
+                        <td>{{group.transferNo}}</td>
+                        <td>{{group.transferdata }}</td>
+                        <td>{{group.fromFactory }}</td>
+                        <td>{{group.toFactory }}</td>
+                        <td>{{group.fromDepartment }}</td>
+                        <td>{{group.toDepartment }}</td>
+                        <td>
+                            <button type="button" (click)="isDeleteRow()"
+                                class="btn btn-danger btn-sm">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- If Bag Detail Table clik any row value that time visible -->
+
+        <div *ngIf="details && details.length > 0"
+            formArrayName="bagTransferDetailEntityList"
+            class="table-responsive mt-4 container">
             <table class="table table-bordered table-hover">
                 <thead class="table-light">
                     <tr>
@@ -117,22 +159,15 @@
                         <th>Lot Code</th>
                         <th>Stone Size</th>
                         <th>Commodity</th>
-                        <th class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let group of bagDetails.controls; let i = index"
-                        [formGroupName]="i">
-                        <td>{{ group.get('bagId')?.value }}</td>
-                        <td>{{ group.get('lotId')?.value }}</td>
-                        <td>{{ group.get('lotCode')?.value }}</td>
-                        <td>{{ group.get('stoneSize')?.value }}</td>
-                        <td>{{ group.get('commodityName')?.value }}</td>
-                        <td class="text-center">
-                            <button type="button" (click)="onDialog()" class="btn btn-danger btn-sm">
-                                <i class="bi bi-cloud-plus"></i>
-                            </button>
-                        </td>
+                    <tr *ngFor="let group of details">
+                        <td>{{group.bagTransferDetailEntityList[0]?.bagId}}</td>
+                        <td>{{group.bagTransferDetailEntityList[0]?.lotId}}</td>
+                        <td>{{group.bagTransferDetailEntityList[0]?.lotCode}}</td>
+                        <td>{{group.bagTransferDetailEntityList[0]?.stoneSize}}</td>
+                        <td>{{group.bagTransferDetailEntityList[0]?.commodityName}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -151,4 +186,3 @@
         </div>
     </form>
 </div>
-

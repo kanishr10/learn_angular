@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BagTransferService } from '../services/bag-transfer.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-popup-bag-transfer',
@@ -11,7 +12,7 @@ export class PopupBagTransferComponent implements OnInit {
   bagTransfer: any[] = [];
   bagTransferUpload: any[] = [];
 
-  constructor(private bagServices: BagTransferService) { }
+  constructor(private bagServices: BagTransferService, private dialogRef: MatDialogRef<PopupBagTransferComponent>) { }
 
 
   ngOnInit(): void {
@@ -24,6 +25,12 @@ export class PopupBagTransferComponent implements OnInit {
 
   @Output() transferSelected = new EventEmitter<any[]>();
 
+  addSelectedToUpload() {
+    this.sendDataToParent();
+  this.dialogRef.close(this.bagTransferUpload);  // Send data back to parent
+}
+
+
   onCheckboxChange(event: any, row: any) {
     if (event.target.checked) {
       this.bagTransferUpload.push(row);
@@ -31,6 +38,7 @@ export class PopupBagTransferComponent implements OnInit {
       this.bagTransferUpload = this.bagTransferUpload.filter(item => item !== row);
     }
   }
+
 
   sendDataToParent() {
     this.transferSelected.emit(this.bagTransferUpload);
