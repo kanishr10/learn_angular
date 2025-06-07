@@ -30,7 +30,7 @@
       "id": "1870"
     },
     {
-      "id": "5ae5",
+      "id": "55",
       "invoice": "40",
       "date": "2025-05-30",
       "reference": "1243",
@@ -48,11 +48,85 @@
           ]
         }
       ]
+    },
+    {
+      "invoice": "40",
+      "date": "2025-05-30",
+      "reference": "1243",
+      "customFilterDetailList": [
+        {
+          "filterName": "2343",
+          "conditions": [
+            {
+              "size": "3",
+              "qty": "5",
+              "rate": "5"
+            }
+          ]
+        }
+      ],
+      "id": "535"
+    },
+    {
+      "invoice": "40",
+      "date": "2025-05-30",
+      "reference": "1244",
+      "customFilterDetailList": [
+        {
+          "filterName": "2343",
+          "conditions": [
+            {
+              "size": "3",
+              "qty": "5",
+              "rate": "5"
+            }
+          ]
+        }
+      ],
+      "id": "576"
+    },
+    {
+      "invoice": "30",
+      "date": "2025-05-30",
+      "reference": "2343",
+      "customFilterDetailList": [
+        {
+          "filterName": "23454",
+          "conditions": [
+            {
+              "size": "9",
+              "qty": "4",
+              "rate": "567"
+            }
+          ]
+        }
+      ],
+      "id": "57"
+    },
+    {
+      "id": "58",
+      "invoice": "20",
+      "date": "2025-05-31",
+      "reference": "1243",
+      "customFilterDetailList": [
+        {
+          "filterName": "2573",
+          "conditions": [
+            {
+              "id": null,
+              "size": "23",
+              "qty": "1",
+              "rate": "60",
+              "amount": 250
+            }
+          ]
+        }
+      ]
     }
   ],
   "bagTransfers": [
     {
-      "id": 1,
+      "id": "1",
       "transferNo": "BT-1001",
       "transferDate": "2025-06-01",
       "fromFactory": "Factory A",
@@ -71,7 +145,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "transferNo": "BT-1002",
       "transferDate": "2025-06-02",
       "fromFactory": "Factory C",
@@ -90,7 +164,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": "3",
       "transferNo": "BT-1003",
       "transferDate": "2025-06-03",
       "fromFactory": "Factory E",
@@ -109,7 +183,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": "4",
       "transferNo": "BT-1004",
       "transferDate": "2025-06-04",
       "fromFactory": "Factory G",
@@ -128,7 +202,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": "5",
       "transferNo": "BT-1005",
       "transferDate": "2025-06-05",
       "fromFactory": "Factory I",
@@ -147,7 +221,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": "6",
       "transferNo": "BT-1006",
       "transferDate": "2025-06-03",
       "fromFactory": "Factory Z",
@@ -166,7 +240,7 @@
       ]
     },
     {
-      "id": 7,
+      "id": "7",
       "transferNo": "BT-1007",
       "transferDate": "2025-06-07",
       "fromFactory": "Factory E",
@@ -185,7 +259,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": "8",
       "transferNo": "BT-1008",
       "transferDate": "2025-06-08",
       "fromFactory": "Factory J",
@@ -204,7 +278,7 @@
       ]
     },
     {
-      "id": 9,
+      "id": "9",
       "transferNo": "BT-1009",
       "transferDate": "2025-06-09",
       "fromFactory": "Factory L",
@@ -223,7 +297,7 @@
       ]
     },
     {
-      "id": 10,
+      "id": "10",
       "transferNo": "BT-1010",
       "transferDate": "2025-06-10",
       "fromFactory": "Factory N",
@@ -240,44 +314,134 @@
           "commodityName": "Platinum Chain"
         }
       ]
+    }
+  ],
+  "user": [
+    {
+      "id": "",
+      "userId": "101",
+      "title": "kanish",
+      "completed": "true"
     },
     {
-      "id": 11,
-      "transferNo": "BT-1011",
-      "transferDate": "2025-06-11",
-      "fromFactory": "Factory P",
-      "toFactory": "Factory Q",
-      "fromDepartment": "Diamond E",
-      "toDepartment": "Diamond F",
-      "bagTransferDetailEntityList": [
-        {
-          "id": 11,
-          "bagId": "BAG011",
-          "lotId": "L011",
-          "lotCode": "LC111",
-          "stoneSize": "1.5ct",
-          "commodityName": "Diamond Ring"
-        }
-      ]
+      "id": "",
+      "userId": "102",
+      "title": "Rames",
+      "completed": "false"
     },
     {
-      "id": 12,
-      "transferNo": "BT-1012",
-      "transferDate": "2025-06-12",
-      "fromFactory": "Factory R",
-      "toFactory": "Factory S",
-      "fromDepartment": "Ruby A",
-      "toDepartment": "Ruby B",
-      "bagTransferDetailEntityList": [
-        {
-          "id": 12,
-          "bagId": "BAG012",
-          "lotId": "L012",
-          "lotCode": "LC112",
-          "stoneSize": "3.0ct",
-          "commodityName": "Ruby Pendant"
-        }
-      ]
+      "id": "",
+      "userId": "",
+      "title": "",
+      "completed": ""
+    },
+    {
+      "id": "",
+      "userId": "103",
+      "title": "kavin",
+      "completed": "true"
+    },
+    {
+      "id": "",
+      "userId": "",
+      "title": "",
+      "completed": ""
+    },
+    {
+      "id": "",
+      "userId": "",
+      "title": "",
+      "completed": ""
+    },
+    {
+      "id": "",
+      "userId": "",
+      "title": "",
+      "completed": ""
+    },
+    {
+      "id": "",
+      "userId": "",
+      "title": "",
+      "completed": ""
+    },
+    {
+      "id": "",
+      "userId": "",
+      "title": "",
+      "completed": ""
+    },
+    {
+      "id": "",
+      "userId": "",
+      "title": "",
+      "completed": ""
+    },
+    {
+      "id": "",
+      "userId": "",
+      "title": "",
+      "completed": ""
+    },
+    {
+      "id": "",
+      "userId": "",
+      "title": "",
+      "completed": ""
+    },
+    {
+      "id": "",
+      "userId": "",
+      "title": "",
+      "completed": ""
+    },
+    {
+      "id": "",
+      "userId": "",
+      "title": "",
+      "completed": ""
+    },
+    {
+      "id": "",
+      "userId": "",
+      "title": "",
+      "completed": ""
+    },
+    {
+      "id": "",
+      "userId": "",
+      "title": "",
+      "completed": ""
+    },
+    {
+      "id": "",
+      "userId": "",
+      "title": "",
+      "completed": ""
+    },
+    {
+      "id": "",
+      "userId": "",
+      "title": "",
+      "completed": ""
+    },
+    {
+      "id": "",
+      "userId": "",
+      "title": "",
+      "completed": ""
+    },
+    {
+      "id": "",
+      "userId": "",
+      "title": "",
+      "completed": ""
+    },
+    {
+      "id": "",
+      "userId": "",
+      "title": "",
+      "completed": ""
     }
   ]
 }

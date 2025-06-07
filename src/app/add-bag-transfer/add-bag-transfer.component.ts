@@ -13,17 +13,18 @@ import { __values } from 'tslib';
 export class AddBagTransferComponent implements OnInit {
 
   bagTransfer!: FormGroup;
+  bagTransferNewRows!: FormGroup;
   headerTitle = "Add Transfer Form";
   showBagDetails: boolean = false;
   selectedRows: any[] = [];
   details: any[] = [];
-  newRows: any[] = [];
+  // newRows: any[] = [];
 
   constructor(private fb: FormBuilder, private bagServices: BagTransferService, private dialogRef: MatDialog) { }
 
   ngOnInit(): void {
     this.bagTransfer = this.fb.group({
-      id: null,
+      id: "",
       transferNo: ["", [Validators.required]],
       transferDate: ["", [Validators.required]],
       fromFactory: [{ value: "Factory A", disabled: false }],
@@ -36,6 +37,15 @@ export class AddBagTransferComponent implements OnInit {
       ])
     });
     // console.log(this.selectedRows);
+    this.bagTransferNewRows = this.fb.group({
+      id:"",
+      bagId: [''],
+      lotId: ['null'],
+      lotCode: [""],
+      stoneSize: [""],
+      commodityName: ['null'],
+
+    })
   }
 
   createBagDetailGroup(): FormGroup {
@@ -50,16 +60,16 @@ export class AddBagTransferComponent implements OnInit {
   }
 
 createLotTable() {
-  const newRow = {
-        bagId: '',
-        lotId: '',
-        lotCode: '',
-        stoneSize: '',
-        commodityName: ''
-  };
-  this.newRows.push(newRow);
-  console.log(this.newRows);
-  console.log(newRow)
+  const newGroup = this.fb.group({
+    id: null,
+    bagId: [''],
+    lotId: [''],
+    lotCode: [''],
+    stoneSize: [''],
+    commodityName: ['']
+  });
+
+  this.bagDetails.push(newGroup);
 }
 
 
@@ -71,22 +81,27 @@ createLotTable() {
     this.bagDetails.push(this.createBagDetailGroup());
   }
 
-  removeRow(index: number): void {
+  removeRow(index: any): void {
     this.bagDetails.removeAt(index);
+
   }
 
-  onSubmit(): void {
-    console.log(this.newRows)
-    if (this.bagTransfer.valid) {
-      const payload = this.bagTransfer.getRawValue();
-      this.bagServices.createTransfer(payload).subscribe(() => {
-        alert('Transfer added successfuly!')
-        this.bagTransfer.reset();
-        this.bagDetails.clear();
-        this.bagDetails.push(this.createBagDetailGroup());
-      })
-    }
+onSubmit(): void {
+  if (this.bagTransfer.valid) {
+    const payload = this.bagTransfer.getRawValue(); // includes all FormArray data
+    this.bagServices.createTransfer(payload).subscribe(() => {
+      alert('Transfer added successfully!');
+      this.bagTransfer.reset();
+      this.bagDetails.clear();
+      this.bagDetails.push(this.createBagDetailGroup());
+    });
   }
+}
+
+onSubmitNewRows(){
+  console.log(this.bagTransferNewRows)
+}
+
 
   onDialog() {
     const dialogRef = this.dialogRef.open(PopupBagTransferComponent, {
@@ -126,10 +141,10 @@ createLotTable() {
     }
   }
 
-  isDeleteLotNewRow(row:any){
-    if(this.newRows.indexOf(row) > -1){
-      this.newRows.splice(this.newRows.indexOf(row), 1)
-    }
-  }
+  // isDeleteLotNewRow(row:any){
+  //   if(this.newRows.indexOf(row) > -1){
+  //     this.newRows.splice(this.newRows.indexOf(row), 1)
+  //   }
+  // }
 
 }

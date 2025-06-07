@@ -22,10 +22,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="p-3" *ngFor="let bag of bagTransfer">
+            <tr class="p-3" *ngFor="let bag of bagTransfer; let i = index">
                 <td>
                     <div class="d-flex justify-content-around">
-                        <i class="bi bi-trash-fill"></i>
+                        <i (click)="deleteTransferRow(bag.id,bag)" class="bi bi-trash-fill"></i>
                         <i class="bi bi-pen"></i>
                     </div>
                 </td>

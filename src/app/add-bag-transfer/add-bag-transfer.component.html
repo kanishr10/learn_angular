@@ -179,49 +179,42 @@
                                 <i class="bi bi-pen"></i>
                             </button>
                             <button type="button" (click)="createLotTable()"
-                                class="btn btn-danger btn-sm">
-                                <i class="bi bi-plus-circle-dotted"></i>
+                                class="btn btn-outline-primary">
+                                <i class="bi bi-plus-circle-dotted"></i> Add Bag
+                                Detail
                             </button>
+
                         </td>
                     </tr>
-                    <!-- <ng-container *ngIf="newRows.length > 0">
-                        <tr *ngFor="let group of newRows">
-                            <td><input
-                                    [(ngModel)]="group.bagTransferDetailEntityList[0].bagId"
+                    <form action="">
+                        
+                    </form>
+                    <ng-container *ngIf="bagDetails.controls.length > 0">
+                        <tr
+                            *ngFor="let group of bagDetails.controls; let i = index"
+                            [formGroupName]="i">
+                            <td><input formControlName="bagId"
                                     class="form-control" /></td>
-                            <td><input
-                                    [(ngModel)]="group.bagTransferDetailEntityList[0].lotId"
+                            <td><input formControlName="lotId"
                                     class="form-control" /></td>
-                            <td><input
-                                    [(ngModel)]="group.bagTransferDetailEntityList[0].lotCode"
+                            <td><input formControlName="lotCode"
                                     class="form-control" /></td>
-                            <td><input
-                                    [(ngModel)]="group.bagTransferDetailEntityList[0].stoneSize"
+                            <td><input formControlName="stoneSize"
                                     class="form-control" /></td>
-                            <td><input
-                                    [(ngModel)]="group.bagTransferDetailEntityList[0].commodityName"
+                            <td><input formControlName="commodityName"
                                     class="form-control" /></td>
-                            <td class="d-flex justify-content-around">
-                                <button type="button"
-                                    (click)="isDeleteLotNewRow(group)"
+                            <td>
+                                <button type="button" (click)="removeRow(i)"
                                     class="btn btn-danger btn-sm">
-                                    <i class="bi bi-trash"></i>
+                                    <i class="bi bi-trash-fill"></i>
                                 </button>
-                                <button type="button"
-                                    class="btn btn-danger btn-sm">
-                                    <i class="bi bi-pen"></i>
-                                </button>
-                                <button type="button" (click)="createLotTable()"
-                                class="btn btn-danger btn-sm">
-                                <i class="bi bi-plus-circle-dotted"></i>
-                            </button>
                             </td>
                         </tr>
-                    </ng-container> -->
-
+                    </ng-container>
                 </tbody>
             </table>
-            <button mat-flat-button color="primary" type="submit" (click)="onSubmit()">
+            <button mat-flat-button color="primary" type="submit"
+                (click)="onSubmit()">
                 Submit
             </button>
         </div>
